@@ -21,7 +21,7 @@
                     <ul class="navbar-nav main-menu ml-auto">
                         <li  class="active"><a href="{{ path('mainpage') }}">Главная</a></li>
                         <li><a href="{{ path('bookmakerlist') }}">Букмекеры</a></li>
-                        <li><a href="news-1">Новости</a></li>
+                        <li><a href="{{ path('news', {'page': 1}) }}">Новости</a></li>
                         <li><a href="{{ path('result') }}">Результаты</a></li>
                         <li><a href="">Информация</a>
                             <ul class="sub-menu">
