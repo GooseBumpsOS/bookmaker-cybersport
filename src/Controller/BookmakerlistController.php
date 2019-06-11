@@ -12,6 +12,7 @@ class BookmakerlistController extends AbstractController
      */
     public function index()
     {
+
         return $this->render('bookmakerlist/index.html.twig', [
             'controller_name' => 'BookmakerlistController',
         ]);
