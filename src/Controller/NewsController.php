@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\News;
+use App\Entity\NewsComment;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -28,8 +29,16 @@ class NewsController extends AbstractController
      */
     public function single($slug)
     {
+        $emNews = $this->getDoctrine()->getManager()->getRepository(News::class);
+        $emNewsComment = $this->getDoctrine()->getManager()->getRepository(NewsComment::class);
+
+        $content = $emNews->findOneBy(['slug' => $slug]);
+        $comment = $emNewsComment->findBy(['news_name' => $slug]);
+
         return $this->render('news/single-blog.html.twig', [
-            'slug' => $slug,
+            'content' => $content,
+            'random_content' => $emNews->getRandom(4),
+            'comment' => $comment,
         ]);
     }
 }

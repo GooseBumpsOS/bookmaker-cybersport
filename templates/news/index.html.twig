@@ -69,13 +69,13 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="post-item">
                     <div class="thumb">
-                        <img src="{{ content[i].img}}" alt="{{ content[i].title}}">
+                        <img style="height: 28vh;" src="{{ content[i].img}}" alt="{{ content[i].title}}">
                     </div>
                     <div class="content">
                         <ul class="post-meta">
-                            <li><a href="{{ content[i].slug}}"><i class="fa fa-calendar"></i>04, March, 2019</a></li>
+                            <li><a href="news/{{ content[i].slug}}"><i class="fa fa-calendar"></i>04, March, 2019</a></li>
                         </ul>
-                        <h5 class="post-title"><a href="{{ content[i].slug}}">{{ content[i].title }}</a></h5>
+                        <h5 class="post-title"><a href="news/{{ content[i].slug}}">{{ content[i].title }}</a></h5>
                         <p>{{ content[i].text|slice(0,95) }}...</p>
                     </div>
                 </div>

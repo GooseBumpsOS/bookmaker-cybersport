@@ -9,35 +9,29 @@
     <div class="header-bottom">
         <div class="container">
             <nav class="navbar navbar-expand-lg">
-                <a class="site-logo site-title" href="index.html"><img src="assets/images/logo.png" alt="site-logo"></a>
+                <a class="site-logo site-title" href=""><img src="{{ asset('assets/images/logo.png') }}" alt="site-logo"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="menu-toggle"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav main-menu ml-auto">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="in-play.html">In-play</a></li>
-                        <li><a href="promotion.html">Promotion</a></li>
-                        <li><a href="statistics.html">Statistics</a></li>
-                        <li><a href="result.html">Results</a></li>
-                        <li class="menu_has_children"><a href="blog-details.html#0">pages</a>
+                        <li ><a href="{{ path('mainpage') }}">Главная</a></li>
+                        <li  ><a href="{{ path('bookmakerlist') }}">Букмекеры</a></li>
+                        <li class="active"><a href="news-1">Новости</a></li>
+                        <li ><a href="{{ path('result') }}">Результаты</a></li>
+                        <li><a href="">Информация</a>
                             <ul class="sub-menu">
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="service.html">Services</a></li>
+                                <li><a href="{{ path('contact') }}">Контакты</a></li>
+                                <li><a href="{{ path('policy') }}">Политика</a></li>
+                                <li><a href="{{ path('about') }}">О нас</a></li>
+                                <!-- <li><a href="service.html">Services</a></li>
                                 <li><a href="login.html">Login</a></li>
                                 <li><a href="registration.html">Registration</a></li>
                                 <li><a href="faq.html">FAQ</a></li>
-                                <li><a href="privacy.html">Privacy</a></li>
-                                <li><a href="error-404.html">ERROR Page</a></li>
+                                <li><a href="error-404.html">ERROR Page</a></li> -->
                             </ul>
                         </li>
-                        <li class="menu_has_children"><a href="blog-details.html#0">blog</a>
-                            <ul class="sub-menu">
-                                <li><a href="blog.html">Blog page</a></li>
-                                <li class="active"><a href="blog-details.html">blog single</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="contact.html">contact us</a></li>
+
                     </ul>
                 </div>
             </nav>
@@ -55,7 +49,7 @@
                     <div class="breadcum-content text-center">
                         <h3 class="title">Blog details</h3>
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">home</a></li>
+                            <li class="breadcrumb-item"><a href="/">home</a></li>
                             <li class="breadcrumb-item active">blog details</li>
                         </ol>
                     </div>
@@ -73,109 +67,79 @@
             <div class="col-lg-8">
                 <div class="blog-details-wrapper">
                     <div class="blog-details-thumb">
-                        <img src="{{ asset('assets/images/blog/b1.jpg') }}" alt="image">
+                        <img src="{{ content.img }}" alt="image">
                     </div>
                     <div class="blog-details-content">
                         <ul class="post-meta">
-                            <li><a href="blog-details.html#"><i class="fa fa-user"></i>04, March, 2019</a></li>
-                            <li><a href="blog-details.html#"><i class="fa fa-calendar"></i>04, March, 2019</a></li>
+                            <li><a href="blog-details.html#"><i class="fa fa-user"></i>{{ content.data|date("d/M/Y") }}</a></li>
                         </ul>
-                        <h2 class="blog-details-title">Turn Your Bet Into A High Performing Machine</h2>
-                        <p>Six started far placing saw respect females old. Civilly why how end viewing attempt related enquire visitor. Man particular insensible celebrated conviction stimulated principles day. Sure fail or in said west. Right my front it wound cause fully am sorry if. She jointure goodness interest debating did outweigh. Is time from them full my gone in went. Of no introduced am literature excellence mr stimulated contrasted increasing. Age sold some full like rich new. Amounted repeated as believed in confined juvenile. </p>
-                        <p>Ought these are balls place mrs their times add she. Taken no great widow spoke of it small. Genius use except son esteem merely her limits. Sons park by do make on. It do oh cottage offered cottage in written. Especially of dissimilar up attachment themselves by interested boisterous. Linen mrs seems men table. Jennings dashwood to quitting marriage bachelor in. On as conviction in of appearance apartments boisterous. </p>
+                        <h2 class="blog-details-title">{{ content.title }}</h2>
+                       {{ content.text|nl2br }}
                     </div>
-                    <div class="blog-details-footer d-flex justify-content-between">
-                        <div class="post-tags">
-                            <i class="fa fa-tags"></i>
-                            <a href="blog-details.html#">Bet</a>
-                            <a href="blog-details.html#">football</a>
-                            <a href="blog-details.html#">casino</a>
-                            <a href="blog-details.html#">news</a>
-                        </div>
-                        <div class="meta-share">
-                            <i class="fa fa-share"></i>
-                            <a href="blog-details.html#"><i class="fa fa-facebook-f"></i></a>
-                            <a href="blog-details.html#"><i class="fa fa-google-plus"></i></a>
-                            <a href="blog-details.html#"><i class="fa fa-twitter"></i></a>
-                            <a href="blog-details.html#"><i class="fa fa-vimeo"></i></a>
-                        </div>
-                    </div>
+{#                    <div class="blog-details-footer d-flex justify-content-between">#}
+{#                        <div class="post-tags">#}
+{#                            <i class="fa fa-tags"></i>#}
+{#                            <a href="blog-details.html#">Bet</a>#}
+{#                            <a href="blog-details.html#">football</a>#}
+{#                            <a href="blog-details.html#">casino</a>#}
+{#                            <a href="blog-details.html#">news</a>#}
+{#                        </div>#}
+{#                        <div class="meta-share">#}
+{#                            <i class="fa fa-share"></i>#}
+{#                            <a href="blog-details.html#"><i class="fa fa-facebook-f"></i></a>#}
+{#                            <a href="blog-details.html#"><i class="fa fa-google-plus"></i></a>#}
+{#                            <a href="blog-details.html#"><i class="fa fa-twitter"></i></a>#}
+{#                            <a href="blog-details.html#"><i class="fa fa-vimeo"></i></a>#}
+{#                        </div>#}
+{#                    </div>#}
                 </div><!-- blog-details-wrapper end -->
                 <div class="comment-area">
-                    <h3 class="title">3 Comments</h3>
+                    <h3 class="title">Кол-во комментариев: {{ comment|length }}</h3>
                     <ul class="comment-list">
+                        {% if comment|length >= 1  %}
+                        {% for i in 0..comment|length-1 %}
                         <li>
+
+
                             <div class="single-comment-wrap">
                                 <div class="thumb">
-                                    <img src="{{ asset('assets/images/blog/rp1.jpg') }}" alt="comment-thumb">
+                                    <img src="{{ asset('assets/images/blog/rp1.svg') }}" alt="comment-thumb">
                                 </div>
                                 <div class="content">
-                                    <h6 class="name">David Jacson</h6>
-                                    <span class="reply-time">02 Hours Ago</span>
-                                    <a href="blog-details.html#" class="reply"><i class="fa fa-reply"></i></a>
-                                    <p>Dignissim nisl quisque nunc aenean, ut aliquam non viverra, morbi vulputatniolor turpis eros  dolor in ligula sed semper est magna, duis pretium integer nec voluptas taciti. Dolor fermentum quis quis luctus</p>
+                                    <h6 class="name">{{ comment[i].userName }}</h6>
+                                    <span class="reply-time">{{  (date().timestamp - comment[i].time ) // 60}} час(а) назад</span>
+{#                                    <a href="" class="reply"><i class="fa fa-reply"></i></a>#}
+                                    <p>Comment test</p>
                                 </div>
                             </div>
                         </li>
-                        <li class="has-children">
-                            <ul>
-                                <li>
-                                    <div class="single-comment-wrap">
-                                        <div class="thumb">
-                                            <img src="assets/images/blog/rp2.jpg" alt="comment-thumb">
-                                        </div>
-                                        <div class="content">
-                                            <h6 class="name">David Jacson</h6>
-                                            <span class="reply-time">02 Hours Ago</span>
-                                            <a href="blog-details.html#" class="reply"><i class="fa fa-reply"></i></a>
-                                            <p>There are many variations of passages of Lorem Ipsum available but the majority have the suffered alteration in that  some form by injected.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <div class="single-comment-wrap">
-                                <div class="thumb">
-                                    <img src="assets/images/blog/rp1.jpg" alt="comment-thumb">
-                                </div>
-                                <div class="content">
-                                    <h6 class="name">Jena Lambert</h6>
-                                    <span class="reply-time">02 Hours Ago</span>
-                                    <a href="blog-details.html#" class="reply"><i class="fa fa-reply"></i></a>
-                                    <p>Dignissim nisl quisque nunc aenean, ut aliquam non viverra, morbi vulputatniolor turpis eros  dolor in ligula sed semper est magna, duis pretium integer nec voluptas taciti. Dolor fermentum quis quis luctus</p>
-                                </div>
-                            </div>
-                        </li>
+                        {% endfor %}
+                        {% endif %}
+
                     </ul>
                 </div><!-- comment-area end -->
                 <div class="comment-form-wrap">
-                    <h3 class="title">Leave a reply</h3>
+                    <h3 class="title">Оставить отзыв</h3>
                     <form class="cmn-form comment-form">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="frm-group">
-                                    <input type="text" name="name" id="name" placeholder="Name*">
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="frm-group">
-                                    <input type="url" name="url" id="url" placeholder="Website*">
+                                    <input type="text" name="name" id="name" placeholder="Имя*" required>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="frm-group">
-                                    <input type="email" name="email" id="email" placeholder="Email Address*">
+                                    <input type="email" name="email" id="email" placeholder="Email адрес">
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="frm-group">
-                                    <textarea name="message" id="message" placeholder="Write Message"></textarea>
+                                    <textarea name="message" id="message" placeholder="Ваше сообщение" required></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="frm-group">
-                                    <button type="submit" class="submit-btn">Comment</button>
+                                    <button type="submit" class="submit-btn">Ответить</button>
                                 </div>
                             </div>
                         </div>
@@ -199,88 +163,36 @@
                             <li><a href="blog-details.html#0">powerball<span>(12)</span></a></li>
                             <li><a href="blog-details.html#0">tenis<span>(05)</span></a></li>
                         </ul>
+
+
+
+{#                        random posts#}
                     </div><!-- widget end -->
                     <div class="widget widget-most-view-post">
-                        <h4 class="widget-title">Most Viewed Posts</h4>
+                        <h4 class="widget-title">Вам может быть интересно</h4>
+                        {% for i in 0..random_content|length-1 %}
                         <ul class="small-post-list">
                             <li>
                                 <div class="small-post-item">
                                     <div class="small-post-thumb">
-                                        <img src="assets/images/blog/s1.jpg" alt="image">
+                                        <img src="{{ random_content[i].img }}" alt="{{ random_content[i].title }}">
                                     </div>
                                     <div class="small-post-content">
-                                        <h6><a href="blog-details.html#0">Turn Your Bet Into A High Performing...</a></h6>
+                                        <h6><a href="{{ random_content[i].slug }}">{{ random_content[i].title }}</a></h6>
                                         <ul class="post-meta">
-                                            <li><a href="blog-details.html#"><i class="fa fa-calendar"></i>04, March, 2019</a></li>
+                                            <li><a href="{{ random_content[i].slug }}"><i class="fa fa-calendar"></i>{{ random_content[i].data|date("d/M/Y") }}</a></li>
                                         </ul>
                                     </div>
                                 </div>
                             </li><!-- small-post-item end -->
-                            <li>
-                                <div class="small-post-item">
-                                    <div class="small-post-thumb">
-                                        <img src="assets/images/blog/s2.jpg" alt="image">
-                                    </div>
-                                    <div class="small-post-content">
-                                        <h6><a href="blog-details.html#0">Turn Your Bet Into A High Performing...</a></h6>
-                                        <ul class="post-meta">
-                                            <li><a href="blog-details.html#"><i class="fa fa-calendar"></i>04, March, 2019</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li><!-- small-post-item end -->
-                            <li>
-                                <div class="small-post-item">
-                                    <div class="small-post-thumb">
-                                        <img src="assets/images/blog/s3.jpg" alt="image">
-                                    </div>
-                                    <div class="small-post-content">
-                                        <h6><a href="blog-details.html#0">Turn Your Bet Into A High Performing...</a></h6>
-                                        <ul class="post-meta">
-                                            <li><a href="blog-details.html#"><i class="fa fa-calendar"></i>04, March, 2019</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li><!-- small-post-item end -->
-                            <li>
-                                <div class="small-post-item">
-                                    <div class="small-post-thumb">
-                                        <img src="assets/images/blog/s4.jpg" alt="image">
-                                    </div>
-                                    <div class="small-post-content">
-                                        <h6><a href="blog-details.html#0">Turn Your Bet Into A High Performing...</a></h6>
-                                        <ul class="post-meta">
-                                            <li><a href="blog-details.html#"><i class="fa fa-calendar"></i>04, March, 2019</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li><!-- small-post-item end -->
-                            <li>
-                                <div class="small-post-item">
-                                    <div class="small-post-thumb">
-                                        <img src="assets/images/blog/s5.jpg" alt="image">
-                                    </div>
-                                    <div class="small-post-content">
-                                        <h6><a href="blog-details.html#0">Turn Your Bet Into A High Performing...</a></h6>
-                                        <ul class="post-meta">
-                                            <li><a href="blog-details.html#"><i class="fa fa-calendar"></i>04, March, 2019</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </li><!-- small-post-item end -->
+
                         </ul>
+                        {% endfor %}
                     </div><!-- widget end -->
-                    <div class="widget widget-instagram">
-                        <h4 class="widget-title">instgram</h4>
-                        <ul class="instagram-list">
-                            <li><a href="assets/images/blog/1.jpg" data-rel="lightcase:myCollection:slideshow" title="Your title"><img src="assets/images/blog/insta1.jpg" alt="image"></a></li>
-                            <li><a href="assets/images/blog/2.jpg" data-rel="lightcase:myCollection:slideshow" title="Your title"><img src="assets/images/blog/insta2.jpg" alt="image"></a></li>
-                            <li><a href="assets/images/blog/3.jpg" data-rel="lightcase:myCollection:slideshow" title="Your title"><img src="assets/images/blog/insta3.jpg" alt="image"></a></li>
-                            <li><a href="assets/images/blog/1.jpg" data-rel="lightcase:myCollection:slideshow" title="Your title"><img src="assets/images/blog/insta4.jpg" alt="image"></a></li>
-                            <li><a href="assets/images/blog/2.jpg" data-rel="lightcase:myCollection:slideshow" title="Your title"><img src="assets/images/blog/insta5.jpg" alt="image"></a></li>
-                            <li><a href="assets/images/blog/3.jpg" data-rel="lightcase:myCollection:slideshow" title="Your title"><img src="assets/images/blog/insta6.jpg" alt="image"></a></li>
-                        </ul>
-                    </div>
+
+
+
+
                 </div>
             </div>
         </div>

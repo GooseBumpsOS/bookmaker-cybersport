@@ -22,7 +22,7 @@ class News
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=80)
+     * @ORM\Column(type="string", length=100)
      */
     private $img;
 
@@ -42,9 +42,31 @@ class News
         $this->img = $img;
     }
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $data;
 
     /**
-     * @ORM\Column(type="string", length=80)
+     * @return mixed
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param mixed $data
+     */
+    public function setData($data): void
+    {
+        $this->data = $data;
+    }
+
+
+
+    /**
+     * @ORM\Column(type="string", length=130, unique=true)
      */
     private $slug;
 
