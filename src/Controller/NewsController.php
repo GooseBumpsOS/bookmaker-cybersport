@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\News;
 use App\Entity\NewsComment;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class NewsController extends AbstractController
@@ -27,8 +28,22 @@ class NewsController extends AbstractController
     /**
      * @Route("/news/{slug}", name="slug")
      */
-    public function single($slug)
+    public function single($slug, Request $request)
     {
+        if ($request->request->count() != 0) { //блок отвечает за добавления комментария в базу
+
+            $dbComment = new NewsComment();
+
+            $dbComment->setComment($request->request->get('msg'));
+            $dbComment->setNewsName($slug);
+            $dbComment->setTime(time());
+            $dbComment->setUserName($request->request->get('name'));
+
+            $this->getDoctrine()->getManager()->persist($dbComment);
+            $this->getDoctrine()->getManager()->flush();
+
+        }
+
         $emNews = $this->getDoctrine()->getManager()->getRepository(News::class);
         $emNewsComment = $this->getDoctrine()->getManager()->getRepository(NewsComment::class);
 

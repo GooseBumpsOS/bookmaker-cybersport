@@ -109,7 +109,7 @@
                                     <h6 class="name">{{ comment[i].userName }}</h6>
                                     <span class="reply-time">{{  (date().timestamp - comment[i].time ) // 60}} час(а) назад</span>
 {#                                    <a href="" class="reply"><i class="fa fa-reply"></i></a>#}
-                                    <p>Comment test</p>
+                                    <p>{{ comment[i].comment }}</p>
                                 </div>
                             </div>
                         </li>
@@ -120,7 +120,7 @@
                 </div><!-- comment-area end -->
                 <div class="comment-form-wrap">
                     <h3 class="title">Оставить отзыв</h3>
-                    <form class="cmn-form comment-form">
+                    <form class="cmn-form comment-form" action="" method="post">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="frm-group">
@@ -129,12 +129,7 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="frm-group">
-                                    <input type="email" name="email" id="email" placeholder="Email адрес">
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="frm-group">
-                                    <textarea name="message" id="message" placeholder="Ваше сообщение" required></textarea>
+                                    <textarea name="msg" id="message" placeholder="Ваше сообщение" required></textarea>
                                 </div>
                             </div>
                             <div class="col-md-12">
