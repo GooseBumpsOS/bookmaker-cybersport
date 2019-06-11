@@ -45,22 +45,22 @@ class News
     /**
      * @ORM\Column(type="date")
      */
-    private $data;
+    private $date;
 
     /**
      * @return mixed
      */
-    public function getData()
+    public function getDate()
     {
-        return $this->data;
+        return $this->date;
     }
 
     /**
      * @param mixed $data
      */
-    public function setData($data): void
+    public function setDate($date): void
     {
-        $this->data = $data;
+        $this->date = $date;
     }
 
 

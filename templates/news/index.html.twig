@@ -73,7 +73,7 @@
                     </div>
                     <div class="content">
                         <ul class="post-meta">
-                            <li><a href="news/{{ content[i].slug}}"><i class="fa fa-calendar"></i>04, March, 2019</a></li>
+                            <li><a href="news/{{ content[i].slug}}"><i class="fa fa-calendar"></i>{{ content[i].date|date("d/M/Y") }}</a></li>
                         </ul>
                         <h5 class="post-title"><a href="news/{{ content[i].slug}}">{{ content[i].title }}</a></h5>
                         <p>{{ content[i].text|slice(0,95) }}...</p>
@@ -90,7 +90,7 @@
 
                         <li class="page-item {% if page == 1 %} disabled {% endif %} }}"><a class="page-link" href="news-{{ page-1 }}"><</a></li>
                         <li class="page-item active"><a class="page-link" >{{ page }}</a></li>
-                        <li class="page-item {% if page == last_page %} disabled {% endif %} }}"><a class="page-link" href="news-{{ page+1 }}">></a></li>
+                        <li class="page-item {% if page == last_page %} disabled {% endif %} "><a class="page-link" href="news-{{ page+1 }}">></a></li>
 
 
 

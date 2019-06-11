@@ -18,10 +18,13 @@ class NewsController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager()->getRepository(News::class);
 
+        $pageData = $em->getByPage($page);
+
+
         return $this->render('news/index.html.twig', [
             'page' => $page,
-            'last_page' => (int)$em->getTableCount(),
-            'content' => $em->findBy([], ['id' => 'DESC'])
+            'last_page' => ceil($em->getTableCount() / 9),
+            'content' => $pageData
         ]);
     }
 

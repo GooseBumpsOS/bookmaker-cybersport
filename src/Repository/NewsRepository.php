@@ -42,6 +42,20 @@ class NewsRepository extends ServiceEntityRepository
 
     }
 
+    public function getByPage($page){
+
+        $qb = $this
+            ->createQueryBuilder('p')
+            ->orderBy("p.id", "DESC")
+            ->setFirstResult(($page-1)*9)
+            ->setMaxResults(9)
+            ->getQuery();
+
+        return $qb->execute();
+
+
+    }
+
     // /**
     //  * @return News[] Returns an array of News objects
     //  */
