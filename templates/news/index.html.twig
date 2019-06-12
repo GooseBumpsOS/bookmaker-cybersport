@@ -19,11 +19,10 @@
                         <li  ><a href="{{ path('bookmakerlist') }}">Букмекеры</a></li>
                         <li class="active"><a href="{{ path('news', {'page': 1}) }}">Новости</a></li>
                         <li><a href="{{ path('result') }}">Результаты</a></li>
-                        <li><a href="">Информация</a>
+                        <li class="menu_has_children"><a href="{{ path('contact') }}">Информация</a>
                             <ul class="sub-menu">
                                 <li><a href="{{ path('contact') }}">Контакты</a></li>
                                 <li><a href="{{ path('policy') }}">Политика</a></li>
-                                <li><a href="{{ path('about') }}">О нас</a></li>
                                 <!-- <li><a href="service.html">Services</a></li>
                                 <li><a href="login.html">Login</a></li>
                                 <li><a href="registration.html">Registration</a></li>
@@ -31,6 +30,7 @@
                                 <li><a href="error-404.html">ERROR Page</a></li> -->
                             </ul>
                         </li>
+                        <li><a href="{{ path('about') }}">О нас</a></li>
 
                     </ul>
                 </div>

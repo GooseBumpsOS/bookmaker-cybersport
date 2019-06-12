@@ -57,7 +57,7 @@ class CmsController extends AbstractController
             $dbNews->setImg($request->request->get('img'));
             $dbNews->setText($request->request->get('text'));
             $dbNews->setTitle($request->request->get('title'));
-            $dbNews->setSlug($this->trasnlate($request->request->get('title')));
+            $dbNews->setSlug($this->_translate($request->request->get('title')));
             $dbSeo->setNewsName($dbNews->getSlug());
             $dbSeo->setAlt($request->request->get('alt'));
             $dbSeo->setDescription($request->request->get('description'));
@@ -78,7 +78,7 @@ class CmsController extends AbstractController
         ]);
     }
 
-    private function trasnlate($str){
+    private function _translate($str){
 
         $tr = array(
             "А"=>"A","Б"=>"B","В"=>"V","Г"=>"G",
