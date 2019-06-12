@@ -5,6 +5,7 @@ namespace App\Controller;
 define('password', '$2y$10$2QlKFibkLUq5N71PyAhhrug6JyycE/0XpEx4pGw0DfEjybEe7.sWO');
 
 use App\Entity\News;
+use App\Entity\Seo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -49,15 +50,22 @@ class CmsController extends AbstractController
 
         if ($request->request->count() != 0)
         {
-            $db = new News();
+            $dbNews = new News();
+            $dbSeo = new Seo();
 
-            $db->setDate(new \DateTime(date("d-M-Y")));
-            $db->setImg($request->request->get('img'));
-            $db->setText($request->request->get('text'));
-            $db->setTitle($request->request->get('title'));
-            $db->setSlug($this->trasnlate($request->request->get('title')));
+            $dbNews->setDate(new \DateTime(date("d-M-Y")));
+            $dbNews->setImg($request->request->get('img'));
+            $dbNews->setText($request->request->get('text'));
+            $dbNews->setTitle($request->request->get('title'));
+            $dbNews->setSlug($this->trasnlate($request->request->get('title')));
+            $dbSeo->setNewsName($dbNews->getSlug());
+            $dbSeo->setAlt($request->request->get('alt'));
+            $dbSeo->setDescription($request->request->get('description'));
+            $dbSeo->setHtmlTitle($request->request->get('html_title'));
 
-            $this->getDoctrine()->getManager()->persist($db);
+            $this->getDoctrine()->getManager()->persist($dbNews);
+            $this->getDoctrine()->getManager()->persist($dbSeo);
+
             $this->getDoctrine()->getManager()->flush();
 
 

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\News;
 use App\Entity\NewsComment;
+use App\Entity\Seo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -49,14 +50,17 @@ class NewsController extends AbstractController
 
         $emNews = $this->getDoctrine()->getManager()->getRepository(News::class);
         $emNewsComment = $this->getDoctrine()->getManager()->getRepository(NewsComment::class);
+        $emSeo = $this->getDoctrine()->getManager()->getRepository(Seo::class);
 
         $content = $emNews->findOneBy(['slug' => $slug]);
         $comment = $emNewsComment->findBy(['news_name' => $slug]);
+        $seo = $emSeo->findOneBy(['news_name' => $slug]);
 
         return $this->render('news/single-blog.html.twig', [
             'content' => $content,
             'random_content' => $emNews->getRandom(4),
             'comment' => $comment,
+            'seo' => $seo,
         ]);
     }
 }

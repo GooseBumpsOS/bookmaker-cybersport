@@ -1,4 +1,31 @@
-{% include 'usual_template/header.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/images/favicon.jpg') }}"/>
+    <title>{{ seo.htmlTitle }}</title>
+    <!-- fontawesome css link -->
+    <link rel="stylesheet" href="{{ asset('assets/css/fontawesome.min.css') }}">
+    <!-- flat icon css link -->
+    <link rel="stylesheet" href="{{ asset('assets/css/flaticon.css') }}">
+    <!-- bootstrap css link -->
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+    <!-- animate css link -->
+    <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}">
+    <!-- slick slider css link -->
+    <link rel="stylesheet" href="{{ asset('assets/css/slick.css') }}">
+    <!-- lightcase css link -->
+    <link rel="stylesheet" href="{{ asset('assets/css/lightcase.css') }}">
+    <!-- main style css link -->
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <!-- responsive css file -->
+    <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+</head>
+{#SEO#}
+
+<meta name="description" content="{{ seo.description }}">
 <!-- preloader start -->
 <div id="preloader"></div>
 <!-- preloader end -->
@@ -170,7 +197,7 @@
                             <li>
                                 <div class="small-post-item">
                                     <div class="small-post-thumb">
-                                        <img src="{{ random_content[i].img }}" alt="{{ random_content[i].title }}">
+                                        <img src="{{ random_content[i].img }}" alt="{{ seo.alt }}">
                                     </div>
                                     <div class="small-post-content">
                                         <h6><a href="{{ random_content[i].slug }}">{{ random_content[i].title }}</a></h6>
