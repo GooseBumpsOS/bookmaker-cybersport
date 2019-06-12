@@ -196,6 +196,53 @@
   }
 }
 
+@media (max-width: 480px){.play-table{
+                          width:100%;
+                        }
+  .team-name-part i{
+    display:none;
+  }
+
+  .play-table table{
+    border-color: transparent !important;
+  }
+
+  .play-table>table div{
+    padding:0;
+    box-sizing: border-box;
+    border:none;
+  }
+  .play-table>table tr>td{
+    display:inline-block;
+    width: 100%;
+  }
+  .play-table>table tr>td:nth-child(1){
+    width:60%;
+  }
+  .play-table>table tr>td:nth-child(2){
+    width:40%
+  }
+  .play-table>table tr>td:nth-child(n+3){
+    width: 100%;
+  }
+
+  .play-table>table tr{
+    text-align: justify;
+  }
+
+  .play-table>table th:nth-child(n+2){
+    display: none;
+  }
+  .play-table>table th:nth-child(1){
+    color:transparent;
+  }
+  .play-table>table th:nth-child(1):before{
+    content:"1XBET";
+    width:100%;
+    height:100%;
+    color:white;
+  }}
+
 @media (max-width: 767px) {
   .banner-image-part {
     display: none;

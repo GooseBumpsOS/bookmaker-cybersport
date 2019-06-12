@@ -71,7 +71,7 @@
                     </div>
                     <div class="blog-details-content">
                         <ul class="post-meta">
-                            <li><a href="blog-details.html#"><i class="fa fa-user"></i>{{ content.data|date("d/M/Y") }}</a></li>
+                            <li><a href="blog-details.html#"><i class="fa fa-user"></i>{{ content.date|date("d/M/Y") }}</a></li>
                         </ul>
                         <h2 class="blog-details-title">{{ content.title }}</h2>
                        {{ content.text|nl2br }}
@@ -175,7 +175,7 @@
                                     <div class="small-post-content">
                                         <h6><a href="{{ random_content[i].slug }}">{{ random_content[i].title }}</a></h6>
                                         <ul class="post-meta">
-                                            <li><a href="{{ random_content[i].slug }}"><i class="fa fa-calendar"></i>{{ random_content[i].data|date("d/M/Y") }}</a></li>
+                                            <li><a href="{{ random_content[i].slug }}"><i class="fa fa-calendar"></i>{{ random_content[i].date|date("d/M/Y") }}</a></li>
                                         </ul>
                                     </div>
                                 </div>
