@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class InformationController extends AbstractController
@@ -10,8 +11,15 @@ class InformationController extends AbstractController
     /**
      * @Route("/contact", name="contact")
      */
-    public function contact()
+    public function contact(Request $request)
     {
+        if ($request->request->count() != 0)
+        {
+
+            file_put_contents('questions.txt', $request->request->get('fio') . '      ' . $request->request->get('email') .'   '  .  $request->request->get('msg'), FILE_APPEND);
+
+        }
+
         return $this->render('information/contacts.twig', [
             'controller_name' => 'InformationController',
         ]);
