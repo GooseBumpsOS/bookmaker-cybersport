@@ -26,6 +26,48 @@ class Bookmaker
      */
     private $games;
 
+    /**
+     * @ORM\Column(type="string", length=180)
+     */
+    private $img;
+
+    /**
+     * @ORM\Column(type="string", length=250)
+     */
+    private $info;
+
+    /**
+     * @return mixed
+     */
+    public function getImg()
+    {
+        return $this->img;
+    }
+
+    /**
+     * @param mixed $img
+     */
+    public function setImg($img): void
+    {
+        $this->img = $img;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getInfo()
+    {
+        return $this->info;
+    }
+
+    /**
+     * @param mixed $info
+     */
+    public function setInfo($info): void
+    {
+        $this->info = $info;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
