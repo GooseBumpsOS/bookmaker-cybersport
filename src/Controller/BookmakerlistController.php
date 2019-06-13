@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Bookmaker;
 use App\Entity\BookmakerRating;
+use App\Entity\Seo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -22,9 +23,9 @@ class BookmakerlistController extends AbstractController
     }
 
     /**
-     * @Route("/bookmaker/{name}", name="bookmakerlist-rating")
+     * @Route("/bookmaker/{bookmakerName}", name="bookmakerlist-rating")
      */
-    public function rating($name, Request $request)
+    public function rating($bookmakerName, Request $request)
     {
         if ($request->request->count() != 0) { //блок отвечает за добавления комментария в базу
 
@@ -33,7 +34,7 @@ class BookmakerlistController extends AbstractController
             $dbComment->setUserName($request->request->get('name'));
             $dbComment->setComment($request->request->get('msg'));
             $dbComment->setMark($request->request->get('rating'));
-            $dbComment->setBookmakerName($this->_russianToTranslit($name));
+            $dbComment->setBookmakerName($this->_russianToTranslit($bookmakerName));
 
 
             $this->getDoctrine()->getManager()->persist($dbComment);
@@ -42,9 +43,11 @@ class BookmakerlistController extends AbstractController
         }
         $emBookmaker = $this->getDoctrine()->getManager()->getRepository(Bookmaker::class);
         $emBookmakerRatin = $this->getDoctrine()->getManager()->getRepository(BookmakerRating::class);
+        $emSeo = $this->getDoctrine()->getManager()->getRepository(Seo::class);
 
-        $content = $emBookmaker->findOneBy(['name' => $this->_russianToTranslit($name)]);
-        $rating = $emBookmakerRatin->findBy(['bookmaker_name' => $this->_russianToTranslit($name)]);
+        $content = $emBookmaker->findOneBy(['name' => $this->_russianToTranslit($bookmakerName)]);
+        $rating = $emBookmakerRatin->findBy(['bookmaker_name' => $this->_russianToTranslit($bookmakerName)]);
+        $seo = $emSeo->findOneBy(['news_name' => $this->_russianToTranslit($bookmakerName)]);
         $avg = $emBookmakerRatin->getAvgOfMark();
 
 
@@ -52,6 +55,7 @@ class BookmakerlistController extends AbstractController
             'content' => $content,
             'rating' => $rating,
             'avg' => round($avg, 1),
+            'seo' => $seo,
         ]);
     }
 
