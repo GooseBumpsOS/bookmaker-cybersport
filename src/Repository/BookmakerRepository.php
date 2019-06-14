@@ -25,9 +25,10 @@ class BookmakerRepository extends ServiceEntityRepository
             ->createQueryBuilder('p')
             ->where('p.games LIKE :game')
             ->setParameter('game', '%' . $game . '%')
-            ->getQuery();
+            ->getQuery()
+      ;
 
-      return $query->execute();
+      return $query->getArrayResult();
 
     }
 }
