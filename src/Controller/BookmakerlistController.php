@@ -34,7 +34,7 @@ class BookmakerlistController extends AbstractController
             $dbComment->setUserName($request->request->get('name'));
             $dbComment->setComment($request->request->get('msg'));
             $dbComment->setMark($request->request->get('rating'));
-            $dbComment->setBookmakerName($this->_russianToTranslit($bookmakerName));
+            $dbComment->setBookmakerName($this->_translitToRussian($bookmakerName));
 
 
             $this->getDoctrine()->getManager()->persist($dbComment);
@@ -45,10 +45,10 @@ class BookmakerlistController extends AbstractController
         $emBookmakerRatin = $this->getDoctrine()->getManager()->getRepository(BookmakerRating::class);
         $emSeo = $this->getDoctrine()->getManager()->getRepository(Seo::class);
 
-        $content = $emBookmaker->findOneBy(['name' => $this->_russianToTranslit($bookmakerName)]);
-        $rating = $emBookmakerRatin->findBy(['bookmaker_name' => $this->_russianToTranslit($bookmakerName)]);
-        $seo = $emSeo->findOneBy(['news_name' => $this->_russianToTranslit($bookmakerName)]);
-        $avg = $emBookmakerRatin->getAvgOfMark();
+        $content = $emBookmaker->findOneBy(['name' => $this->_translitToRussian($bookmakerName)]);
+        $rating = $emBookmakerRatin->findBy(['bookmaker_name' => $this->_translitToRussian($bookmakerName)]);
+        $seo = $emSeo->findOneBy(['news_name' => $this->_translitToRussian($bookmakerName)]);
+        $avg = $emBookmakerRatin->getAvgOfMark($this->_translitToRussian($bookmakerName));
 
 
         return $this->render('bookmakerlist/rating.html.twig', [
@@ -59,7 +59,7 @@ class BookmakerlistController extends AbstractController
         ]);
     }
 
-    private function _russianToTranslit($str)
+    private function _translitToRussian($str)
     {
 
         $tr = ["a" => "а", "b" => "б", "v" => "в", "g" => "г", "d" => "д", "e" => "е", "yo" => "ё",

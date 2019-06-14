@@ -19,11 +19,13 @@ class BookmakerRatingRepository extends ServiceEntityRepository
         parent::__construct($registry, BookmakerRating::class);
     }
 
-    public function getAvgOfMark() : float {
+    public function getAvgOfMark($name) : float {
 
         $qb = $this
             ->createQueryBuilder('p')
             ->select('avg(p.mark)')
+            ->where('p.bookmaker_name = :name')
+            ->setParameter('name', $name)
             ->getQuery()
         ;
 
