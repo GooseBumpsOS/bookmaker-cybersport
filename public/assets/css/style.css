@@ -2265,3 +2265,36 @@ span.is-active:after {
   content: "\f005";
 }
 /* 5 star end*/
+
+/*start self-table*/
+.table-head{
+
+  color: #FFFFFF;
+  background-color: #000040;
+
+}
+
+.table-self{
+
+  color: #000040;
+
+}
+
+.table-striped > tbody > tr:nth-child(odd){
+
+  background-color: #ebf0f1 !important;
+
+}
+
+.table-self > tr > td {
+
+  text-align: center;
+
+}
+
+.table-self > button{
+
+  background-color: #ff3952!important;
+
+}
+/*end self table*/
