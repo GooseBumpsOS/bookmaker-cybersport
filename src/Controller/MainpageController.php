@@ -13,12 +13,9 @@ class MainpageController extends AbstractController
      */
     public function index()
     {
-        $em = $this->getDoctrine()->getManager()->getRepository(Bookmaker::class);
-
-        $sort_by_games = ['dota' => $em->findAllByGame('Dota 2'), 'cs' => $em->findAllByGame('CS:GO')];
-
+       
         return $this->render('mainpage/index.html.twig', [
-            'bookmaker' => $sort_by_games,
+
         ]);
     }
 }
