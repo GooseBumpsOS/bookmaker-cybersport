@@ -44,8 +44,8 @@
         for(var i=0;i<data.length;i++){
 
           for (var c = 0;c < Math.round(data[i].rating); c++)
-            star.push('<i class="fa fa-star" style="color: #FFD700;" aria-hidden="true"></i>');
-
+            star.push('<i class="fa fa-star" style="color: #FFD700; margin-right: 5px;" aria-hidden="true"></i> ');
+          star.push(Math.round( + data[i].rating) + '/5');
 
           $('tbody').append('<tr>\n' +
               '                            <td> '+ data[i].name + '</td>\n' +
