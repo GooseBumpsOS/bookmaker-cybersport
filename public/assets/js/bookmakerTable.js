@@ -22,7 +22,7 @@ $.ajax({
            '                            <td> '+ data[i].name + '</td>\n' +
            '                            <td>\n' +
            '\n' +
-           '                                <button type="button" class="btn btn-danger center-block"><a href=bookmaker/" ' + data[i].link + '">Отзывы</a></button>\n' +
+           '                                <button type="button" class="btn btn-danger center-block"><a href="bookmaker/' + data[i].link + '">Отзывы</a></button>\n' +
            '\n' +
            '\n' +
            '                            </td>\n' +
@@ -30,9 +30,10 @@ $.ajax({
            '\n' +
            '                        </tr>');
 
-
+         star.length = 0; //обнуление массива
 
      }
+
    }
 
 
