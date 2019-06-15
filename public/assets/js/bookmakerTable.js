@@ -1,5 +1,6 @@
 $( ".nav-item > .nav-link" ).click(function() {
 
+    var star = [];
     var game = $(this).attr('id');
 
     $('tbody').html('');
@@ -13,6 +14,9 @@ $.ajax({
 
      for(var i=0;i<data.length;i++){
 
+         for (var c = 0;c < Math.round(data[i].rating); c++)
+             star.push('<i class="fa fa-star" style="color: #FFD700;" aria-hidden="true"></i>');
+
 
        $('tbody').append('<tr>\n' +
            '                            <td> '+ data[i].name + '</td>\n' +
@@ -22,7 +26,7 @@ $.ajax({
            '\n' +
            '\n' +
            '                            </td>\n' +
-           '                            <td> ' +  data[i].rating  + ' </td>\n' +
+           '                            <td> ' +  star.join('')  + ' </td>\n' +
            '\n' +
            '                        </tr>');
 
@@ -38,3 +42,4 @@ $.ajax({
 
 
 });
+
