@@ -3,14 +3,14 @@ $( ".nav-item > .nav-link" ).click(function() {
     var star = [];
     var game = $(this).attr('id');
 
-    $('tbody').html('');
-
 $.ajax({
    type: "POST",
    dataType: "json",
    url: "api",
    data: {"game" : game},
    success: function(data){
+
+       $('tbody').html('');
 
      for(var i=0;i<data.length;i++){
 
@@ -35,7 +35,33 @@ $.ajax({
 
      }
 
-   }
+   },
+   beforeSend: function (data) {
+
+       $('tbody').html('');
+
+       $('.table-self').html('<tr>\n' +
+           '                            <td></td>\n' +
+           '                            <td>\n' +
+           '\n' +
+           '                                <img src="assets/images/tablePreloader.gif">\n' +
+           '\n' +
+           '\n' +
+           '                            </td>\n' +
+           '                            <td>\n' +
+           '\n' +
+           '\n' +
+           '\n' +
+           '\n' +
+           '                            </td>\n' +
+           '\n' +
+           '                        </tr>\n' +
+           '                        ');
+
+
+
+   },
+
 
 
 

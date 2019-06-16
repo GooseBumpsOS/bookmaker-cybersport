@@ -6,7 +6,7 @@ $( document ).ready(function() {
         url: "result/api",
         success: function(data){
             var games_img = ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnxJ1uby9M-2eY00l1pXTinOe-HSH7OnG-hiQSOjGK6VXBOXPj', 'https://image.flaticon.com/icons/svg/588/588308.svg', 'https://c1.staticflickr.com/9/8398/29628694882_8eed12375e.jpg', 'https://wiki.gamedetectives.net/images/b/bf/Overwatch_logo.jpg'];
-            var games = ['League of Legends\n', 'dota 2', 'cs:go', 'overwatch'];
+            var games = ['League of Legends\n', 'dota 2', 'CS:GO', 'overwatch'];
 
            for (var i = 0; i < data.length; i++) {
                $('.mt-mb-15').append('<div style="margin: 20px 25%;" class="section-header text-center">            <h2 class="section-title">Результаты '+ games[i] +'</h2>            <p>ЗДесь вы можете найти результаты по '+ games[i] +'.</p>        </div>');
@@ -39,7 +39,12 @@ $( document ).ready(function() {
 
 
 
-        }
+        },
+        complete: function() {
+
+        $('#resultPreloader').hide();
+
+    }
 
 
     });
