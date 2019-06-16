@@ -202,3 +202,7 @@
     });
 
 })(jQuery);
+
+
+
+$('tbody').append('<th scope="row"></th><td> <img style="border: 0;margin: 0 25%;width: 12vw; height: 12vh;" src="https://media.giphy.com/media/xTk9ZvMnbIiIew7IpW/giphy.gif"> </td><th></th>');
