@@ -41,31 +41,31 @@ class Carousel
         return $this->img;
     }
 
-    public function setImg(string $img): self
+    public function setImg($img): self
     {
         $this->img = $img;
 
         return $this;
     }
 
-    public function getHeaderText(): ?string
+    public function getHeaderText()
     {
         return $this->headerText;
     }
 
-    public function setHeaderText(?string $headerText): self
+    public function setHeaderText($headerText)
     {
         $this->headerText = $headerText;
 
         return $this;
     }
 
-    public function getText(): ?string
+    public function getText()
     {
         return $this->text;
     }
 
-    public function setText(string $text): self
+    public function setText($text)
     {
         $this->text = $text;
 

@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-define('password', '$2y$10$2QlKFibkLUq5N71PyAhhrug6JyycE/0XpEx4pGw0DfEjybEe7.sWO');
+define('password_cms', '$2y$10$2QlKFibkLUq5N71PyAhhrug6JyycE/0XpEx4pGw0DfEjybEe7.sWO');
 
+use App\Entity\Carousel;
 use App\Entity\News;
 use App\Entity\Seo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -22,11 +23,11 @@ class CmsController extends AbstractController
 
         $session = new Session();
 
-        if (password_verify($session->get('password'), password))
+        if (password_verify($session->get('password'), password_cms))
             return $this->redirectToRoute('cms');
 
         if ($request->request->count() != 0)
-            if ($request->request->get('login') == 'toor' && password_verify($request->request->get('password'), password)) {
+            if ($request->request->get('login') == 'toor' && password_verify($request->request->get('password'), password_cms)) {
                 $session->start();
                 $session->set('password', $request->request->get('password'));
                 return $this->redirectToRoute('cms');
@@ -45,7 +46,7 @@ class CmsController extends AbstractController
     {
         $session = new Session();
 
-        if (!password_verify($session->get('password'), password))
+        if (!password_verify($session->get('password'), password_cms))
             return $this->redirectToRoute('cms-login');
 
         if ($request->request->count() != 0)
@@ -76,6 +77,45 @@ class CmsController extends AbstractController
         return $this->render('cms/cms.html.twig', [
             'rows' => $em->getByPage(1),
         ]);
+    }
+
+    /**
+     * @Route("/cms-slider", name="cms-slider")
+     */
+    public function slider_cms(Request $request)
+    {
+        $session = new Session();
+
+        if (!password_verify($session->get('password'), password_cms))
+            return $this->redirectToRoute('cms-login');
+
+        $emSlider = $this->getDoctrine()->getManager()->getRepository(Carousel::class);
+
+        if ($request->request->get('truncate'))
+            $emSlider->clearTable();
+
+        if ($request->request->get('img'))
+        {
+            $dbCarousel = new Carousel();
+
+            $dbCarousel->setImg($request->request->get('img'));
+            $dbCarousel->setText($request->request->get('text'));
+            $dbCarousel->setHeaderText($request->request->get('header'));
+
+            $this->getDoctrine()->getManager()->persist($dbCarousel);
+            $this->getDoctrine()->getManager()->flush();
+        }
+
+        $slider_data = $emSlider->findAll();
+
+
+        return $this->render('cms/slider_cms.html.twig',[
+
+
+            'slider_data' => $slider_data,
+
+        ]);
+
     }
 
     private function _translate($str){

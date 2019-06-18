@@ -17,7 +17,7 @@ class MainpageController extends AbstractController
 
         $emCarousel = $this->getDoctrine()->getManager()->getRepository(Carousel::class);
 
-         $carousel = $emCarousel->findAllasArray();
+         $carousel = $emCarousel->findAll();
        
         return $this->render('mainpage/index.html.twig', [
 

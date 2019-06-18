@@ -19,14 +19,11 @@ class CarouselRepository extends ServiceEntityRepository
         parent::__construct($registry, Carousel::class);
     }
 
-    public function findAllasArray() : array {
+    public function clearTable() : void {
+        $conn = $this->getEntityManager()->getConnection();
 
-        $qb = $this
-            ->createQueryBuilder('p')
-            ->getQuery();
+        $sql = 'TRUNCATE `symfony`.`carousel`';
 
-        return $qb->getArrayResult();
-
-
+        $conn->prepare($sql)->execute();
     }
 }
