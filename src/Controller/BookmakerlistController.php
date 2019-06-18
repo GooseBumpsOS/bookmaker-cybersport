@@ -45,10 +45,22 @@ class BookmakerlistController extends AbstractController
         $emBookmakerRatin = $this->getDoctrine()->getManager()->getRepository(BookmakerRating::class);
         $emSeo = $this->getDoctrine()->getManager()->getRepository(Seo::class);
 
-        $content = $emBookmaker->findOneBy(['name' => $this->_translitToRussian($bookmakerName)]);
-        $rating = $emBookmakerRatin->findBy(['bookmaker_name' => $this->_translitToRussian($bookmakerName)]);
-        $seo = $emSeo->findOneBy(['news_name' => $this->_translitToRussian($bookmakerName)]);
-        $avg = $emBookmakerRatin->getAvgOfMark($this->_translitToRussian($bookmakerName));
+        try{
+
+            $content = $emBookmaker->findOneBy(['name' => $this->_translitToRussian($bookmakerName)]);
+            $rating = $emBookmakerRatin->findBy(['bookmaker_name' => $this->_translitToRussian($bookmakerName)]);
+            $seo = $emSeo->findOneBy(['news_name' => $this->_translitToRussian($bookmakerName)]);
+            $avg = $emBookmakerRatin->getAvgOfMark($this->_translitToRussian($bookmakerName));
+
+        } catch (\TypeError $error){
+
+            $content = $emBookmaker->findOneBy(['name' => $bookmakerName]);
+            $rating = $emBookmakerRatin->findBy(['bookmaker_name' => $bookmakerName]);
+            $seo = $emSeo->findOneBy(['news_name' => $bookmakerName]);
+            $avg = $emBookmakerRatin->getAvgOfMark($bookmakerName);
+
+        }
+
 
 
         return $this->render('bookmakerlist/rating.html.twig', [
