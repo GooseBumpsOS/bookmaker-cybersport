@@ -34,7 +34,7 @@ class ApitableController extends AbstractController
                     $avg[] = $emBookmakerRatin->getAvgOfMark($bookmakerMain[$i]->getName());
 
                    for($i=0;$i<count($bookmakerMain);$i++)
-                    array_push($result, ['name' => $bookmakerMain[$i]->getName(), 'rating' => $avg[$i], 'link' => $this->_russianToTranslit($bookmakerMain[$i]->getName())] );
+                    array_push($result, ['name' => $bookmakerMain[$i]->getName(), 'rating' => $avg[$i], 'link' => $this->_russianToTranslit($bookmakerMain[$i]->getName()), 'link_to_site' => $bookmakerMain[$i]->getLink()] );
 
         } else{
 
@@ -44,7 +44,7 @@ class ApitableController extends AbstractController
              $avg[] = $emBookmakerRatin->getAvgOfMark($bookmakerMain[$i]['name']);
 
             for($i=0;$i<count($bookmakerMain);$i++)
-             array_push($result, ['name' => $bookmakerMain[$i]['name'], 'rating' => $avg[$i], 'link' => $this->_russianToTranslit($bookmakerMain[$i]['name'])] );
+             array_push($result, ['name' => $bookmakerMain[$i]['name'], 'rating' => $avg[$i], 'link' => $this->_russianToTranslit($bookmakerMain[$i]['name']), 'link_to_site' => $bookmakerMain[$i]['link']] );
 
         }
 
