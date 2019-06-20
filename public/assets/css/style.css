@@ -2299,6 +2299,10 @@ span.is-active:after {
 }
 /*end self table*/
 
-/*5 star bookamekr-rating*/
+.time_machine > button{
 
-/*5 star bookamekr-rating end*/
+  margin: 15px 3px;
+
+
+}
+

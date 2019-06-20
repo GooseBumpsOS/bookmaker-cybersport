@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ResultController extends AbstractController
 {
     /**
-     * @Route("/result", name="result")
+     * @Route("/live_coef", name="result")
      */
     public function index()
     {

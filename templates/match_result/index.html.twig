@@ -63,12 +63,23 @@
     </div>
 </section>
 <!-- banner-section end -->
+<div class="col-md-12 col-lg-12 d-flex justify-content-around">
+
+    <div class="time_machine ">
+        <button type="button" id="uifweeuwhiowef" data-time="past" class="btn btn-danger center-block">Прошедшие</button>
+        <button type="button" data-time="active" class="btn btn-danger center-block">Текущие</button>
+        <button type="button" data-time="future" class="btn btn-danger center-block">Будующие</button>
+    </div>
+
+
+
+</div>
 
 <!-- result-section start -->
 <section class="result-section section-padding">
 
     <div class="container">
-        <div class="row justify-content-center">
+        <div id="jqueryAdd" class="row justify-content-center">
 
             <img id="resultPreloader" src="{{ asset('assets/images/tablePreloader.gif') }}">
 
@@ -84,4 +95,4 @@
 
 {% include 'usual_template/footer.html.twig' %}
 
-<script src="{{ asset('assets/js/resultTable.js') }}"></script>
+<script src="{{ asset('assets/js/matchResult.js') }}"></script>

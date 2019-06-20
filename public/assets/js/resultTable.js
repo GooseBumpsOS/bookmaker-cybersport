@@ -12,7 +12,7 @@ $( document ).ready(function() {
                $('.mt-mb-15').append('<div style="margin: 20px 25%;" class="section-header text-center">            <h2 class="section-title">Результаты '+ games[i] +'</h2>            <p>ЗДесь вы можете найти результаты по '+ games[i] +'.</p>        </div>');
                for (var c = 0; c < data[i]['name'].length; c++) {
 
-                   $('.mt-mb-15').append('  <div class="col-lg-6">\n' +
+                    $('.mt-mb-15').append('  <div class="col-lg-6">\n' +
                        '                <div class="result-item d-flex text-center align-items-center justify-content-center">\n' +
                        '                    <div class="team team--left">\n' +
                        '                        <span class="name">' + data[i]['name'][c][0] + ' </span>\n' +
