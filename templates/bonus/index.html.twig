@@ -1,0 +1,95 @@
+{% include 'usual_template/header.html.twig' %}
+
+
+
+
+<!-- preloader start -->
+<div id="preloader"></div>
+<!-- preloader end -->
+
+<div class="custom-cursor"></div>
+<!--  header-section start  -->
+<header class="header-section">
+    <div class="header-bottom">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg">
+                <a class="site-logo site-title" href=""><img src="assets/images/logo.png" alt="site-logo"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="menu-toggle"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav main-menu ml-auto">
+                        <li ><a href="{{ path('mainpage') }}">Главная</a></li>
+                        <li  ><a href="{{ path('bookmakerlist') }}">Букмекеры</a></li>
+                        <li ><a href="{{ path('news', {'page': 1}) }}">Новости</a></li>
+                        <li class="active"><a href="{{ path('result') }}">Результаты</a></li>
+                        <li class="menu_has_children"><a href="#">Информация</a>
+                            <ul class="sub-menu">
+                                <li><a href="{{ path('contact') }}">Контакты</a></li>
+                                <li><a href="{{ path('policy') }}">Политика</a></li>
+                                <!-- <li><a href="service.html">Services</a></li>
+                                <li><a href="login.html">Login</a></li>
+                                <li><a href="registration.html">Registration</a></li>
+                                <li><a href="faq.html">FAQ</a></li>
+                                <li><a href="error-404.html">ERROR Page</a></li> -->
+                            </ul>
+                        </li>
+                        <li><a href="{{ path('about') }}">О нас</a></li>
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div><!-- header-bottom end -->
+</header>
+<!--  header-section end  -->
+
+<!-- banner-section start -->
+<section class="breadcum-section">
+    <div class="breadcum-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcum-content text-center">
+                        <h3 class="title">Результат</h3>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Домой</a></li>
+                            <li class="breadcrumb-item active">Результат</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- banner-section end -->
+
+<!-- result-section start -->
+<section class="result-section section-padding">
+
+    <div class="container">
+        <div class="row justify-content-center">
+
+
+<div class="col-lg-6 col-md-9" ">
+                           <div class="result-item text-center justify-content-center">
+
+
+                                   <h4>Header Text</h4>
+
+
+                                   <p>hello i'm text</p>
+
+                                   <button type="button" class="btn btn-danger center-block">Ссылка</button>
+
+
+                       </div>
+
+
+        </div>
+    </div>
+</section>
+<!-- result-section end -->
+
+
+{% include 'usual_template/footer.html.twig' %}
