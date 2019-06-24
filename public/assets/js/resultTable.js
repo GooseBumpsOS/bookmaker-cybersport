@@ -3,7 +3,7 @@ $( document ).ready(function() {
     $.ajax({
         type: "POST",
         dataType: "json",
-        url: "result/api",
+        url: "live_coef/api",
         success: function(data){
             var games_img = ['https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnxJ1uby9M-2eY00l1pXTinOe-HSH7OnG-hiQSOjGK6VXBOXPj', 'https://image.flaticon.com/icons/svg/588/588308.svg', 'https://c1.staticflickr.com/9/8398/29628694882_8eed12375e.jpg', 'https://wiki.gamedetectives.net/images/b/bf/Overwatch_logo.jpg'];
             var games = ['League of Legends\n', 'dota 2', 'CS:GO', 'overwatch'];
@@ -21,7 +21,7 @@ $( document ).ready(function() {
                        '                    <div class="result-details">\n' +
                        '                        <p>\n' +
                        '                            <span class="left-team-result">' + data[i]['coeff'][c][0] + '</span>\n' +
-                       '                            <span class="right-team-result"></span>\n' +
+                       '                            <span class="right-team-result">'+ data[i]['coeff'][c][1] +'</span>\n' +
                        '                        </p>\n' +
                        '                        <span class="date">' + data[i]['time'][c] + '</span>\n' +
                        '                    </div>\n' +

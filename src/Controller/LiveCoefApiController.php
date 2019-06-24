@@ -7,10 +7,10 @@ use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ResultApiController extends AbstractController
+class LiveCoefApiController extends AbstractController
 {
     /**
-     * @Route("/result/api", name="result_api")
+     * @Route("/live_coef/api", name="result_api")
      */
     public function index()
     {

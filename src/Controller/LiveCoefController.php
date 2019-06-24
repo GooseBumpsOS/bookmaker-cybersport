@@ -5,7 +5,7 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ResultController extends AbstractController
+class LiveCoefController extends AbstractController
 {
     /**
      * @Route("/live_coef", name="result")
@@ -13,7 +13,7 @@ class ResultController extends AbstractController
     public function index()
     {
         return $this->render('result/index.html.twig', [
-            'controller_name' => 'ResultController',
+            'controller_name' => 'LiveCoefController',
         ]);
     }
 }
