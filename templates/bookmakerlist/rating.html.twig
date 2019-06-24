@@ -187,13 +187,11 @@
                         </form>
                     </div><!-- widget end -->
                     <div class="widget widget-categories">
-                        <h4 class="widget-title">category</h4>
+                        <h4 class="widget-title">Игры</h4>
                         <ul>
-                            <li><a href="blog-details.html#0">football<span>(54)</span></a></li>
-                            <li><a href="blog-details.html#0">basball<span>(22)</span></a></li>
-                            <li><a href="blog-details.html#0">ludo<span>(33)</span></a></li>
-                            <li><a href="blog-details.html#0">powerball<span>(12)</span></a></li>
-                            <li><a href="blog-details.html#0">tenis<span>(05)</span></a></li>
+                            {% for u in 0..games|length-1 %}
+                            <li><a href="javascript:;">{{ games[u] }}</a></li>
+                            {% endfor %}
                         </ul>
 
 

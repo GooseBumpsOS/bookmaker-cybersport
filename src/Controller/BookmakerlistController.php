@@ -59,8 +59,10 @@ class BookmakerlistController extends AbstractController
             $seo = $emSeo->findOneBy(['news_name' => $bookmakerName]);
             $avg = $emBookmakerRatin->getAvgOfMark($bookmakerName);
 
-        }
+        } finally {
 
+            $games = $this->_makeGameArray($content->getGames());
+        }
 
 
         return $this->render('bookmakerlist/rating.html.twig', [
@@ -68,6 +70,7 @@ class BookmakerlistController extends AbstractController
             'rating' => $rating,
             'avg' => round($avg, 1),
             'seo' => $seo,
+            'games' => $games,
         ]);
     }
 
@@ -85,6 +88,19 @@ class BookmakerlistController extends AbstractController
             "''" => "Ъ", "j" => "ї", "i" => "и", "g" => "ґ", "ye" => "є", "J" => "Ї", "I" => "І", "G" => "Ґ", "YE" => "Є"];
 
         return strtr($str, $tr);
+
+    }
+
+    private function _makeGameArray($games){
+
+        $result_explode =  explode(';', $games);
+
+        $result = array_filter($result_explode, function($element) {
+            return !empty($element);
+        });
+
+        return $result;
+
 
     }
 }

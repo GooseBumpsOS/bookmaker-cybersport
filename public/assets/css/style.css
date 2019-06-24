@@ -2306,3 +2306,14 @@ span.is-active:after {
 
 }
 
+
+/*carousel*/
+
+.carousel-item{
+    height: 200px;
+}
+.carousel-item img{
+    height: 200px;
+}
+
+/*carousel end*/
