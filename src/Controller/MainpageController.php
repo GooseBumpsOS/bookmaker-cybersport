@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Bookmaker;
 use App\Entity\Carousel;
+use App\Entity\News;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -15,6 +16,8 @@ class MainpageController extends AbstractController
     public function index()
     {
 
+        $emNews = $this->getDoctrine()->getManager()->getRepository(News::class)->getRandom(3);
+
         $emCarousel = $this->getDoctrine()->getManager()->getRepository(Carousel::class);
 
          $carousel = $emCarousel->findAll();
@@ -22,6 +25,7 @@ class MainpageController extends AbstractController
         return $this->render('mainpage/index.html.twig', [
 
             'carousel' => $carousel,
+            'random_content' => $emNews
 
         ]);
     }

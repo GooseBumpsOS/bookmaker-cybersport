@@ -89,6 +89,27 @@
 <!-- main js file -->
 <script src="{{ asset('assets/js/main.js') }}"></script>
 
+<script>
+
+    var acc = document.getElementsByClassName("accordion-self");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function() {
+            this.classList.toggle("active-self");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+                $('.accordion-self').hide();
+            }
+        });
+    }
+
+
+</script>
+
 
 </body>
 </html>

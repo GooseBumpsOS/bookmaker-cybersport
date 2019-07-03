@@ -9,7 +9,7 @@ $( document ).ready(function() {
             var games = ['League of Legends\n', 'dota 2', 'CS:GO', 'overwatch'];
 
            for (var i = 0; i < data.length; i++) {
-               $('.mt-mb-15').append('<div style="margin: 20px 25%;" class="section-header text-center">            <h2 class="section-title">Результаты '+ games[i] +'</h2>            <p>ЗДесь вы можете найти результаты по '+ games[i] +'.</p>        </div>');
+               $('.mt-mb-15').append('<div style="margin: 20px 25%;" class="section-header text-center">            <h2 class="section-title">Коэффициенты '+ games[i] +'</h2>            <p>Здесь вы можете найти коэффициенты по '+ games[i] +'.</p>        </div>');
                for (var c = 0; c < data[i]['name'].length; c++) {
 
                     $('.mt-mb-15').append('  <div class="col-lg-6">\n' +

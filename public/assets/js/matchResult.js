@@ -20,6 +20,10 @@ var callApi =  function (time){
 
         $('#jqueryAdd').html('');
 
+        $('.result-section').css('padding-top', '0px');
+
+        $('#jqueryAdd').append('<div style="margin: 20px 25%;" class="section-header text-center">            <h2 class="section-title">Результаты матчей </h2>            <p>Здесь вы можете найти результаты игр</p>        </div>');
+
         for (var i = 0; i < data.length; i++ )
             $('#jqueryAdd').append('   <div class="col-lg-6">\n' +
                 '                <div class="result-item d-flex text-center align-items-center justify-content-center">\n' +

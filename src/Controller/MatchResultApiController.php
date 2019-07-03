@@ -19,9 +19,9 @@ class MatchResultApiController extends AbstractController
 //            throw $this->createNotFoundException('Not found 404');
 
         $result = [];
-        $crawler = new Crawler( file_get_contents('https://www.cybersport.ru/base/match?status='. $request->query->get('status') .'&page=1'));
+        $crawler = new Crawler( file_get_contents('https://www.cybersport.ru/base/match?status='. $request->request->get('status') .'&page=1'));
 
-        if ($request->query->get('status') != 'future')
+        if ($request->request->get('status') != 'future')
             for ($i = 0; $i < $crawler->filter('.matche__date > time')->count(); $i++)
             {
                 $time = $crawler->filter('.matche__date > time')->eq($i)->text();
