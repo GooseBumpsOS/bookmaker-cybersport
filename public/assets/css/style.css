@@ -2289,6 +2289,7 @@ span.is-active:after {
 .table-self > tr > td {
 
   text-align: center;
+  vertical-align: middle;
 
 }
 
@@ -2301,7 +2302,7 @@ span.is-active:after {
 
 .time_machine > button{
 
-  margin: 45px 3px;
+  margin: 45px 2px;
 
 
 }
@@ -2356,3 +2357,25 @@ span.is-active:after {
 }
 
 /*carousel end*/
+
+
+@media (max-width: 991px){
+.imgBookmaker{
+
+  width: 20vw;
+  height: 11vh;
+
+
+}}
+
+@media (min-width: 992px){
+  .imgBookmaker{
+
+    width: 10vw;
+    height: 15vh;
+
+
+  }}
+
+
+

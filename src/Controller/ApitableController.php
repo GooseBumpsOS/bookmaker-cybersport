@@ -23,7 +23,7 @@ class ApitableController extends AbstractController
         $result = [];
 
         $emBookmaker = $this->getDoctrine()->getManager()->getRepository(Bookmaker::class);
-        $emBookmakerRatin = $this->getDoctrine()->getManager()->getRepository(BookmakerRating::class);
+        $emBookmakerRating = $this->getDoctrine()->getManager()->getRepository(BookmakerRating::class);
 
         if ($game == 'all')
         {
@@ -31,20 +31,20 @@ class ApitableController extends AbstractController
             $bookmakerMain = $emBookmaker->findAll();
 
                    for($i=0;$i<count($bookmakerMain);$i++)
-                    $avg[] = $emBookmakerRatin->getAvgOfMark($bookmakerMain[$i]->getName());
+                    $avg[] = $emBookmakerRating->getAvgOfMark($bookmakerMain[$i]->getName());
 
                    for($i=0;$i<count($bookmakerMain);$i++)
-                    array_push($result, ['name' => $bookmakerMain[$i]->getName(), 'rating' => $avg[$i], 'link' => $this->_russianToTranslit($bookmakerMain[$i]->getName()), 'link_to_site' => $bookmakerMain[$i]->getLink()] );
+                    array_push($result, ['name' => $bookmakerMain[$i]->getName(), 'rating' => $avg[$i], 'link' => $this->_russianToTranslit($bookmakerMain[$i]->getName()), 'link_to_site' => $bookmakerMain[$i]->getLink(), 'logo' => $bookmakerMain[$i]->getImg()] );
 
         } else{
 
             $bookmakerMain = $emBookmaker->findAllByGame($game);
 
             for($i=0;$i<count($bookmakerMain);$i++)
-             $avg[] = $emBookmakerRatin->getAvgOfMark($bookmakerMain[$i]['name']);
+             $avg[] = $emBookmakerRating->getAvgOfMark($bookmakerMain[$i]['name']);
 
             for($i=0;$i<count($bookmakerMain);$i++)
-             array_push($result, ['name' => $bookmakerMain[$i]['name'], 'rating' => $avg[$i], 'link' => $this->_russianToTranslit($bookmakerMain[$i]['name']), 'link_to_site' => $bookmakerMain[$i]['link']] );
+             array_push($result, ['name' => $bookmakerMain[$i]['name'], 'rating' => $avg[$i], 'link' => $this->_russianToTranslit($bookmakerMain[$i]['name']), 'link_to_site' => $bookmakerMain[$i]['link'], 'logo' => $bookmakerMain[$i]['img']]  );
 
         }
 

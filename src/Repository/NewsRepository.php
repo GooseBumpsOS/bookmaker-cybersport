@@ -33,7 +33,7 @@ class NewsRepository extends ServiceEntityRepository
     public function getRandom($max){
         $qb = $this
             ->createQueryBuilder('p')
-            ->setMaxResults(random_int(1, $this->getTableCount()-$max))
+            ->orderBy('p.id', 'desc')
             ->setMaxResults($max)
             ->getQuery();
 

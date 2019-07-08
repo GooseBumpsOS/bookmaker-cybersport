@@ -23,7 +23,7 @@ class LiveCoefApiController extends AbstractController
 
         for ($c = 0; $c < count($game_name); $c++)
         {
-            $crawler = new Crawler(file_get_contents('https://www.marathonbet.ru/su/betting/e-Sports/' . $game_name[$c]));
+            $crawler = new Crawler(@file_get_contents('https://www.marathonbet.ru/su/betting/e-Sports/' . $game_name[$c]));
 
             $command_name_crawler = $crawler->filter('.member-link > span');
             $time_crawler = $crawler->filter('.date');

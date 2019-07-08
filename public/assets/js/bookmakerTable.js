@@ -17,9 +17,9 @@
                 star.push(Math.round( + data[i].rating) + '/5');
 
                 $('tbody').append('<tr>\n' +
-                    '                            <td> <a href="bookmaker/'+ data[i].link +'">'+ data[i].name + '</a><td>\n' +
+                    '                            <td> <a href="'+  data[i].link_to_site +'">'+ '<img class="imgBookmaker" src="'+ data[i].logo +'">' + '</a><td>\n' +
                     '\n' +
-                    '                                <button type="button" class="btn btn-danger center-block"><a href="' + data[i].link_to_site + '">К букмекеру</a></button>\n' +
+                    '                                <button type="button" class="btn btn-danger center-block"><a href="bookmaker/' + data[i].link + '">Обзор</a></button>\n' +
                     '\n' +
                     '\n' +
                     '                            </td>\n' +
@@ -33,7 +33,7 @@
     });
 
 
-$( ".nav-item > .nav-link" ).click(function() {
+$( ".nav-item > .nav-link" ).click(function() { //при нажатии на другую игру
 
     var star = [];
     var game = $(this).attr('id');
@@ -53,9 +53,9 @@ $( ".nav-item > .nav-link" ).click(function() {
                 star.push(Math.round( + data[i].rating) + '/5');
 
                 $('tbody').append('<tr>\n' +
-                    '                            <td> <a href="bookmaker/'+ data[i].link +'">'+ data[i].name + '</a><td>\n' +
+                    '                            <td> <a href="'+  data[i].link_to_site +'">'+ '<img class="imgBookmaker" src="'+ data[i].logo +'">' + '</a><td>\n' +
                     '\n' +
-                    '                                <button type="button" class="btn btn-danger center-block"><a href="' + data[i].link_to_site + '">К букмекеру</a></button>\n' +
+                    '                                <button type="button" class="btn btn-danger center-block"><a href="bookmaker/' + data[i].link + '">Обзор</a></button>\n' +
                     '\n' +
                     '\n' +
                     '                            </td>\n' +
@@ -66,7 +66,7 @@ $( ".nav-item > .nav-link" ).click(function() {
             }
         }
 ,
-        beforeSend: function (data) {
+        beforeSend: function (data) { //прелоадер
 
             $('tbody').html('');
 
