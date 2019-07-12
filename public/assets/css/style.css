@@ -1035,6 +1035,7 @@ span.is-active:after {
 }
 .thumb img {
   width: 100%;
+  max-height: 240px;
 }
 .play-item .content {
   padding: 20px 0;
@@ -2377,5 +2378,14 @@ span.is-active:after {
 
   }}
 
+/*news костыль*/
 
+.thumb > a{
+
+  display: block!important;
+
+
+}
+
+/*news костыль end*/
 

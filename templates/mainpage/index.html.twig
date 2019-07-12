@@ -164,14 +164,18 @@
                 <div class="col-lg-4 col-sm-6">
                     <div class="post-item">
                         <div class="thumb">
-                            <img src="{{ random_content[i].img }}" alt="image">
+                            <a href="/news/{{ random_content[i].slug }}">
+
+                                <img src="{{ random_content[i].img }}" alt="image">
+
+                            </a>
+
                         </div>
                         <div class="content">
                             <ul class="post-meta">
-                                <li><a href="/news/{{ random_content[i].slug }}"><i class="fa fa-calendar"></i>{{ random_content[i].date|date("d/M/Y") }}</a></li>
+                                <li><a href="news/{{ random_content[i].slug}}"><i class="fa fa-calendar"></i>{{ random_content[i].date|date("d/M/Y") }}</a></li>
                             </ul>
-                            <h5 class="post-title"><a href="/news/{{ random_content[i].slug }}"></a></h5>
-
+                            <h5 class="post-title"><a href="news/{{ random_content[i].slug}}">{{ random_content[i].title }}</a></h5>
                         </div>
                     </div>
                 </div>

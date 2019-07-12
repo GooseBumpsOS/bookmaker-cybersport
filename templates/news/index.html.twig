@@ -75,7 +75,11 @@
             <div class="col-lg-4 col-sm-6">
                 <div class="post-item">
                     <div class="thumb">
-                        <img style="height: 28vh;" src="{{ content[i].img}}" alt="{{ content[i].title}}">
+                        <a href="news/{{ content[i].slug}}">
+
+                            <img style="height: 28vh;" src="{{ content[i].img}}" alt="{{ content[i].title}}">
+
+                        </a>
                     </div>
                     <div class="content">
                         <ul class="post-meta">
