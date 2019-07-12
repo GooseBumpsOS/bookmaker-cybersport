@@ -2389,3 +2389,9 @@ span.is-active:after {
 
 /*news костыль end*/
 
+.navbar > a:hover{
+
+  color:inherit!important;
+  text-decoration: none!important;
+
+}

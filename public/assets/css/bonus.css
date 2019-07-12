@@ -32,6 +32,7 @@ a{
 }
 
 .bonus{
+    margin-bottom: 40px;
     width: 100%;
     position: relative;
     padding: 1em 1.6em;
@@ -85,6 +86,7 @@ a{
 
 .bonus-header-top-tags__exclusive{
     display: inline;
+    position: relative;
 }
 
 .bonus-header-top-tags-exclusive__label{
@@ -122,6 +124,7 @@ a{
 }
 
 .bonus-body__more-link{
+    position: relative;
     color: white;
     font-size: 14px;
     font-family: var(--main-font-family);
@@ -154,6 +157,10 @@ a{
         align-items: baseline;
     }
 
+    .bonus-header-top-tags-exclusive__tooltip-button{
+        display: none
+    }
+
     .bonus-header-top-tags-exclusive__label{
         cursor: help;
     }
@@ -165,6 +172,7 @@ a{
         font-size: 12px;
         padding: 0.2em 0.4em;
         position: absolute;
+        top: 0;
     }
 
     .bonus-header-top-tags-exclusive__tooltip::before{
@@ -187,6 +195,46 @@ a{
         font-size: 12px;
         margin-bottom:.5em
     }
+
+    .bonus-header-top-tags-exclusive__tooltip-button{
+        display: block;
+        position: absolute;
+        top:0;
+        left:0;
+        height:0;
+        width: 0;
+        visibility: hidden
+    }
+
+    label[for^="bonus-header-top-tags-exclusive__checkbox-id"]{
+        position: absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+    }
+
+    .bonus-header-top-tags-exclusive__tooltip-button:checked ~ .bonus-header-top-tags-exclusive__tooltip{
+        display: inline;
+        background: #fff;
+        color: black;
+        font-size: 12px;
+        padding: 0.2em 0.4em;
+        position: absolute;
+        top: calc( 100% + 1em);
+        left: 0;
+    }
+
+    .bonus-header-top-tags-exclusive__tooltip::before{
+        content: "";
+        position: absolute;
+        top: -1.1em;
+        left:10%;
+        box-sizing:border-box;
+        border: .6em solid transparent;
+        border-bottom:.6em solid #fff;
+    }
+
     .bonus-header-top__tags >span{
         margin-right: 0;
     }

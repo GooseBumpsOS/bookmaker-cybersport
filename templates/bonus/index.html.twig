@@ -1,5 +1,7 @@
 {% include 'usual_template/header.html.twig' %}
 
+<title>Бонусы букмекров</title>
+
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i|Oswald:400,500&display=swap&subset=cyrillic" rel="stylesheet"><!-- подключение используемых шрифтов -->
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"> <!-- обязательно скопировать, необходимо для работы с иконкой комментариев -->
 <link rel="stylesheet" href="{{ asset('assets/css/bonus.css') }}">
@@ -54,10 +56,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcum-content text-center">
-                        <h3 class="title">Результат</h3>
+                        <h3 class="title">Бонусы</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Домой</a></li>
-                            <li class="breadcrumb-item active">Результат</li>
+                            <li class="breadcrumb-item active">Бонусы</li>
                         </ol>
                     </div>
                 </div>
@@ -66,6 +68,7 @@
     </div>
 </section>
 <!-- banner-section end -->
+
 
 <!-- bonus-section start -->
 <section class="result-section section-padding">
@@ -76,10 +79,16 @@
 
 <div class="col-lg-9 col-md-9" >
 
+    <h1 style="text-align: center; margin-bottom: 8px; margin-top: -90px;"> Бонусы букмекеров</h1>
+
+    <p>Каждая букмекерская контора преследует цель на стабильной основе привлекать новых клиентов, многие из которых станут постоянными. По этой причине у всех современных БК есть программа лояльности, которая, безусловно, привлекает внимание тех, кто еще не сотрудничает с букмекером. Программа у каждой конторы индивидуальна. Но, как правило, общие тенденции одни и те же.
+    </p>
+
+    <br>
 
     {% for i in 0..dbData|length-1 %}
 
-    <div class="temp"><!-- temp --><!-- temp - декоративный блок чтобы сделать имитацию ограницеснной ширины экрана, его копированить не нужно-->
+
         <!-- НАЧАЛО БЛОКА -->
         <div class="bonus" style="background:url({{ bgImg[random(0,bgImg|length-1)] }}) no-repeat;background-size: cover;"><!-- bonus --><!-- не забыть вставить ссылку на бэкграунд-->
             <!-- В блоке выше бэкграунд вставлен инлайново чтобы его можно было получать с php -->
@@ -101,22 +110,91 @@
             <div class="bonus__body bonus-body"><!-- bonus-body -->
                 <p class="bonus-body__content">{{ dbData[i].preText}}</p>
                 <p class="bonus-body__more-link bonus-body-more-link">
+                    <input class="bonus-header-top-tags-exclusive__tooltip-button" type="checkbox" id="bonus-header-top-tags-exclusive__checkbox-id-{{ i }}"><label for="bonus-header-top-tags-exclusive__checkbox-id-{{ i }}"></label> <!-- НЕ ЗАБУДЬ СДЕЛАТЬ ГЕНЕРАТОР ID-ШНИКОВ У ЧЕКБОКСА -->
                     <span class="bonus-header-top-tags-exclusive__label">Подробнее</span>
-                    <span class="bonus-header-top-tags-exclusive__tooltip">{{ dbData[i].text }}</span>
-
+                    <span class="bonus-header-top-tags-exclusive__tooltip">{{ dbData[i].text|nl2br }}</span>
                 </p>
                 <a href="{{ dbData[i].link }}" class="bonus-body__get-link">Получить бонус</a><!-- вставить ссылку на бонус -->
             </div><!-- /bonus-body -->
         </div><!-- /bonus -->
         <!-- КОНЕЦ БЛОКА -->
-    </div><!-- /temp -->
     {% endfor %}
 
 
         </div>
     </div>
-</section>
+        </section >
 <!-- bonus-section end -->
 
 
+<h3 style="background-color: #ffffff;;     padding: 16px 35px;">
+  Какие бывают бонусы у букмекеров
+</h3><br>
+<button class="accordion-self">▼</button>
+<div class="panel-self">
+
+
+
+
+    <p>
+        В первую очередь, их стоит разделять на две категории — стабильно работающие и акционные. Акции, чаще всего, запускаются для новых игроков. Но программы лояльности не обходят стороной и постоянных, активных клиентов.
+
+    </p>
+
+    <ul>
+
+        <li>• Бонус за регистрацию. После регистрации и подтверждения своего профиля вы получаете определенную сумму на свой депозит. Ее нельзя вывести. Она предназначена для первой/первых ставок. Если ставка выиграет, деньги ваши и доступны для вывода;
+        </li><br>
+
+        <li>• Дополнительное вознаграждение за ставки на определенные события;
+        </li><br>
+
+        <li>• Денежный бонус, который начисляется при пополнения депозита на определенную сумму;</li><br>
+
+        <li>• Различные розыгрыши ценных призов, в которых могут принять участие и новички, и постоянные игроки;<br>
+        </li>
+
+        <li>• Бесплатные ставки и т. д.<br>
+
+    </ul>
+
+    <p>Также сегодня все больше букмекерских компаниях подключают кэшбэк. Если ваша ставка не сыграет, определенную денежную сумму вы получите обратно на счет.
+
+    </p>
+
+    <h3>
+        Программа лояльности — лучший бонус букмекерских контор
+
+
+
+
+    </h3>
+
+    <p>
+
+
+        Стоит понимать, что вознаграждение за регистрацию предоставляется один раз. Любые конкурсы или акции в определенный момент заканчиваются. Программа же работает на стабильной основе. Поэтому предоставляет хороший дополнительный доход игрокам. Что представляет собой программа?
+
+
+
+
+    </p>
+
+
+    <p>
+
+        •        Определенный процент от денежной суммы, которую вы поставили на спортивное состязание, идет на бонусный счет. Это может быть как выигранная, так и проигранная ставка;<br>
+        •        Если вы ставите на «избранные» события, получаете больше баллов;<br>
+        •        Когда количество баллов будет приличным, вырастет статус клиента. При новом статусе бонусные баллы превращаются в реальные деньги. Также БК может предоставить фрибет, сумма которого постепенно будет расти;<br>
+        •        За пополнение депозита на хорошие суммы БК может предоставить дополнительные привилегии. Это практически тот же кэшбэк без сложных схем. Вы пополняете счет на N-сумму. От данной суммы вам еще приходит на счет определенный процент.<br>
+
+
+    </p>
+
+</div>
+
+<br>
+
 {% include 'usual_template/footer.html.twig' %}
+
+<script src="{{ asset('assets/js/bookmakerTable.js') }}"> </script>
