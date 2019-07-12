@@ -1,6 +1,8 @@
 {% include 'usual_template/header.html.twig' %}
 
-
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i|Oswald:400,500&display=swap&subset=cyrillic" rel="stylesheet"><!-- подключение используемых шрифтов -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"> <!-- обязательно скопировать, необходимо для работы с иконкой комментариев -->
+<link rel="stylesheet" href="{{ asset('assets/css/bonus.css') }}">
 
 
 <!-- preloader start -->
@@ -13,16 +15,17 @@
     <div class="header-bottom">
         <div class="container">
             <nav class="navbar navbar-expand-lg">
-                <a class="site-logo site-title" href=""><img src="assets/images/logo.png" alt="site-logo"></a>
+                <a class="site-logo site-title" href="/">Cyberrating.</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="menu-toggle"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav main-menu ml-auto">
                         <li ><a href="{{ path('mainpage') }}">Главная</a></li>
-                        <li  ><a href="{{ path('bookmakerlist') }}">Букмекеры</a></li>
+                        <li ><a href="{{ path('bookmakerlist') }}">Букмекеры</a></li>
                         <li ><a href="{{ path('news', {'page': 1}) }}">Новости</a></li>
-                        <li class="active"><a href="{{ path('result') }}">Результаты</a></li>
+                        <li class="active"><a href="{{ path('bonus') }}">Бонусы</a></li>
+                        <li><a href="{{ path('match_result') }}">Результаты матчей</a></li>
                         <li class="menu_has_children"><a href="#">Информация</a>
                             <ul class="sub-menu">
                                 <li><a href="{{ path('contact') }}">Контакты</a></li>
@@ -64,32 +67,56 @@
 </section>
 <!-- banner-section end -->
 
-<!-- result-section start -->
+<!-- bonus-section start -->
 <section class="result-section section-padding">
 
     <div class="container">
         <div class="row justify-content-center">
 
 
-<div class="col-lg-6 col-md-9" >
-                           <div class="result-item text-center justify-content-center">
+<div class="col-lg-9 col-md-9" >
 
 
-                                   <h4>Header Text</h4>
+    {% for i in 0..dbData|length-1 %}
 
+    <div class="temp"><!-- temp --><!-- temp - декоративный блок чтобы сделать имитацию ограницеснной ширины экрана, его копированить не нужно-->
+        <!-- НАЧАЛО БЛОКА -->
+        <div class="bonus" style="background:url({{ bgImg[random(0,bgImg|length-1)] }}) no-repeat;background-size: cover;"><!-- bonus --><!-- не забыть вставить ссылку на бэкграунд-->
+            <!-- В блоке выше бэкграунд вставлен инлайново чтобы его можно было получать с php -->
+            <div class="bonus__header bonus-header"><!-- bonus-header -->
+                <div class="bonus-header__top bonus-header-top">
+                    <img src="{{ dbData[i].logo }}" alt="" class="bonus-header-top__image"><!-- не забыть вставить ссылку на картинку -->
+                    <div class="bonus-header-top__tags bonus-header-top-tags">
+                        <span class="bonus-header-top-tags__simple">Приветственные бонусы</span>
+                        <div class="bonus-header-top-tags__exclusive bonus-header-top-tags-exclusive">
 
-                                   <p>hello i'm text</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="" class="bonus-header__title"><h4>{{ dbData[i].title }}</h4></a> <!-- вставить ссылку на страницу с информацией -->
+{#                <div class="bonus-header__authorization bonus-header-authorization">#}
+{#                    <a href="" class="bonus-header-authorization__link">Авторизируйтесь, чтобы получить бонус</a> <!-- вставить ссылку на страницу авторизации -->#}
+{#                </div>#}
+            </div><!-- /bonus-header -->
+            <div class="bonus__body bonus-body"><!-- bonus-body -->
+                <p class="bonus-body__content">{{ dbData[i].preText}}</p>
+                <p class="bonus-body__more-link bonus-body-more-link">
+                    <span class="bonus-header-top-tags-exclusive__label">Подробнее</span>
+                    <span class="bonus-header-top-tags-exclusive__tooltip">{{ dbData[i].text }}</span>
 
-                                   <button type="button" class="btn btn-danger center-block">Ссылка</button>
-
-
-                       </div>
+                </p>
+                <a href="{{ dbData[i].link }}" class="bonus-body__get-link">Получить бонус</a><!-- вставить ссылку на бонус -->
+            </div><!-- /bonus-body -->
+        </div><!-- /bonus -->
+        <!-- КОНЕЦ БЛОКА -->
+    </div><!-- /temp -->
+    {% endfor %}
 
 
         </div>
     </div>
 </section>
-<!-- result-section end -->
+<!-- bonus-section end -->
 
 
 {% include 'usual_template/footer.html.twig' %}
