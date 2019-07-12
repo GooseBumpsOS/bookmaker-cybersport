@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-lg-3 col-sm-6">
                     <div class="footer-widget widget-about">
-                        <a class="logo"><img src="{{ asset('assets/images/logo.png') }}" alt="image"></a>
+                        <a class="logo" href="/"><img src="{{ asset('assets/images/logo.png') }}" alt="image"></a>
                         <ul class="address-list">
                             <li>Россия</li>
                             <li>example@gmail.com</li>
@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-lg-2 col-sm-6">
                     <div class="footer-widget widget-menu">
-                        <h3 class="widget-title">Menu</h3>
+                        <h3 class="widget-title">Меню</h3>
                         <ul class="menu-links">
                             <li ><a href="{{ path('mainpage') }}">Главная</a></li>
                             <li  ><a href="{{ path('bookmakerlist') }}">Букмекеры</a></li>
@@ -60,7 +60,9 @@
     </div><!-- footer-top end -->
     <div class="footer-bottom text-center">
         <div class="container">
-            <p>2019 All Rights Reserved. Created by <a href="/">Butlar</a></p>
+            <p>
+                <script>document.write(new Date().getFullYear()); </script> All Rights Reserved.<a href="/">cyberrating.ru</a>
+            </p>
         </div>
     </div>
 </footer>

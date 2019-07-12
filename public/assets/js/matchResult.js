@@ -29,7 +29,7 @@ var callApi =  function (time){
                 '                <div class="result-item d-flex text-center align-items-center justify-content-center">\n' +
                 '                    <div class="team team--left">\n' +
                 '                        <span class="name">'+data[i]['command_1']+'</span>\n' +
-                '                        <span class="flag"><img style="height: 30px;" src="'+data[i]['logo']+'" alt="image"></span>\n' +
+                '                        <span class="flag"><img style="height: 30px;" src="'+data[i]['logo']+'" alt="'+ data[i]['logo']+'"></span>\n' +
                 '                    </div>\n' +
                 '                    <div class="result-details">\n' +
                 '                        <p>\n' +
@@ -39,7 +39,7 @@ var callApi =  function (time){
                 '                    </div>\n' +
                 '                    <div class="team team--right">\n' +
                 '                        <span class="name">'+data[i]['command_2']+'</span>\n' +
-                '                        <span class="flag"><img style="height: 30px;" src="'+data[i]['logo']+'" alt="image"></span>\n' +
+                '                        <span class="flag"><img style="height: 30px;" src="'+data[i]['logo']+'" alt="'+ data[i]['logo']+'"></span>\n' +
                 '                    </div>\n' +
                 '                </div>\n' +
                 '            </div>');
@@ -50,7 +50,7 @@ var callApi =  function (time){
 
         $('#jqueryAdd').html('');
 
-        $('#jqueryAdd').html('<img id="resultPreloader" src="/bookmaker-cybersport/public/assets/images/tablePreloader.gif">');
+        $('#jqueryAdd').html('<img id="resultPreloader" src="/assets/images/tablePreloader.gif">');
 
 
     }
