@@ -99,9 +99,8 @@
   });
 
   // Animate the scroll to top
-  $(".scroll-to-top").on("click", function(event) {
-    event.preventDefault();
-    $("html, body").animate({scrollTop: 0}, 800);
+  $(".scroll-to-top").on("click", function() {
+    $(window).scrollTop(0);
   });
 
   $(".parallax-container").on('mousemove',function(e) {
