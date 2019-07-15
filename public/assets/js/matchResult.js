@@ -18,6 +18,14 @@ var callApi =  function (time){
     data: {"status": time},
     success: function (data) {
 
+        if (!data.length) {
+
+            $('#jqueryAdd').html('');
+            $('#jqueryAdd').append('В данном временном отрезке нет матчей');
+
+            return 1;
+        }
+
         $('#jqueryAdd').html('');
 
         $('.result-section').css('padding-top', '0px');
