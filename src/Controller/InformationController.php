@@ -16,7 +16,7 @@ class InformationController extends AbstractController
         if ($request->request->count() != 0)
         {
 
-            file_put_contents('questions.txt', $request->request->get('fio') . '      ' . $request->request->get('email') .'   '  .  $request->request->get('msg'), FILE_APPEND);
+            file_put_contents('questions.txt', $request->request->get('fio') . '      ' . $request->request->get('email') .'   '  .  $request->request->get('msg') . '\n', FILE_APPEND);
 
         }
 

@@ -2395,3 +2395,10 @@ span.is-active:after {
   text-decoration: none!important;
 
 }
+
+.title:nth-child(n+2){
+
+  margin-top: 15px!important;
+
+
+}
