@@ -238,4 +238,10 @@ a{
     .bonus-header-top__tags >span{
         margin-right: 0;
     }
+
+    .bonus-header-top-tags__simple{
+
+     display: none;
+
+    }
 }

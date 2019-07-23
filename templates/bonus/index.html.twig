@@ -96,7 +96,7 @@
                 <div class="bonus-header__top bonus-header-top">
                     <img src="{{ dbData[i].logo }}" alt="" class="bonus-header-top__image"><!-- не забыть вставить ссылку на картинку -->
                     <div class="bonus-header-top__tags bonus-header-top-tags">
-                        <span class="bonus-header-top-tags__simple">Приветственные бонусы</span>
+                        <span class="bonus-header-top-tags__simple">Приветственный бонус</span>
                         <div class="bonus-header-top-tags__exclusive bonus-header-top-tags-exclusive">
 
                         </div>
@@ -108,7 +108,7 @@
 {#                </div>#}
             </div><!-- /bonus-header -->
             <div class="bonus__body bonus-body"><!-- bonus-body -->
-                <p class="bonus-body__content">{{ dbData[i].preText}}</p>
+                <p class="bonus-body__content">{{ dbData[i].preText|nl2br}}</p>
                 <p class="bonus-body__more-link bonus-body-more-link">
                     <input class="bonus-header-top-tags-exclusive__tooltip-button" type="checkbox" id="bonus-header-top-tags-exclusive__checkbox-id-{{ i }}"><label for="bonus-header-top-tags-exclusive__checkbox-id-{{ i }}"></label> <!-- НЕ ЗАБУДЬ СДЕЛАТЬ ГЕНЕРАТОР ID-ШНИКОВ У ЧЕКБОКСА -->
                     <span class="bonus-header-top-tags-exclusive__label">Подробнее</span>

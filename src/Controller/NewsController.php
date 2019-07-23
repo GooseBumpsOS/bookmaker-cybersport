@@ -53,6 +53,10 @@ class NewsController extends AbstractController
         $emSeo = $this->getDoctrine()->getManager()->getRepository(Seo::class);
 
         $content = $emNews->findOneBy(['slug' => $slug]);
+
+        if ($content == null) //проверка на существование записи в бд
+            throw $this->createNotFoundException('Not found 404');
+
         $comment = $emNewsComment->findBy(['news_name' => $slug]);
         $seo = $emSeo->findOneBy(['news_name' => $slug]);
 

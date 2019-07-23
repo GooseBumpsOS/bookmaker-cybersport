@@ -27,12 +27,12 @@ class Bonus
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=150)
+     * @ORM\Column(type="text")
      */
     private $preText;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=430)
      */
     private $text;
 
