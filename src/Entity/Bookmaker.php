@@ -32,7 +32,7 @@ class Bookmaker
     private $img;
 
     /**
-     * @ORM\Column(type="string", length=250)
+     * @ORM\Column(type="text")
      */
     private $info;
 
