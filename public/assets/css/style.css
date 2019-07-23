@@ -2402,3 +2402,21 @@ span.is-active:after {
 
 
 }
+
+.adv{
+
+
+  width: 100%;
+  max-height: 180px;
+
+}
+
+@media (min-width: 441px) {
+
+  .img-bookmaker{
+
+    margin: 0 75%;
+
+  }
+
+}
