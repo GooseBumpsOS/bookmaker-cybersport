@@ -55,7 +55,7 @@ class CmsController extends AbstractController
             $dbSeo = new Seo();
 
             $dbNews->setDate(new \DateTime(date("d-M-Y")));
-            $dbNews->setImg($request->request->get('img'));
+            $dbNews->setImg($this->_uploadFile());
             $dbNews->setText($request->request->get('text'));
             $dbNews->setTitle($request->request->get('title'));
             $dbNews->setSlug($this->_translate($request->request->get('title')));
@@ -139,6 +139,34 @@ class CmsController extends AbstractController
             ">"=>"_","|"=>"_"
         );
         return strtr($str,$tr);
+
+    }
+
+    private function _uploadFile(){
+
+
+        $allowed_filetypes = array('.jpg','.jpeg' ,'.png', '.svg'); // Допустимые типы файлов
+        $max_filesize = 15728640; // Максимальный размер файла в байтах .
+        $upload_path_full = $this->getParameter('img_dir'); // Папка, куда будут загружаться файлы .
+        $upload_path = 'assets/images/news-img/';
+        $filename = $_FILES['userfile']['name']; // В переменную $filename заносим имя файла (включая расширение).
+        $ext = substr($filename, strpos($filename, '.'), strlen($filename) - 1); // В переменную $ext заносим расширение загруженного файла.
+        $randomFileName = md5(time());
+        if (!in_array($ext, $allowed_filetypes)) // Сверяем полученное расширение со списком допутимых расширений.
+            die('Данный тип файла не поддерживается. Напишите в директ мне это - ' . $ext);
+        if (filesize($_FILES['userfile']['tmp_name']) > $max_filesize) // Проверим размер загруженного файла.
+            die('Фаил слишком большой.');
+        if (!is_writable($upload_path_full)) // Проверяем, доступна ли на запись папка.
+            die('Невозможно загрузить фаил в папку. Установите права доступа - 777.');
+// Загружаем фаил в указанную папку.
+        if (move_uploaded_file($_FILES['userfile']['tmp_name'], $upload_path_full . $randomFileName . $ext)) {
+
+            return $upload_path . $randomFileName . $ext;
+
+        }
+            else die('File ERROR');
+
+
 
     }
 }
