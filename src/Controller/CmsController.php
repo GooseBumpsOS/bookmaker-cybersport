@@ -54,20 +54,31 @@ class CmsController extends AbstractController
             $dbNews = new News();
             $dbSeo = new Seo();
 
-            $dbNews->setDate(new \DateTime(date("d-M-Y")));
-            $dbNews->setImg($this->_uploadFile());
-            $dbNews->setText($request->request->get('text'));
-            $dbNews->setTitle($request->request->get('title'));
-            $dbNews->setSlug($this->_translate($request->request->get('title')));
-            $dbSeo->setNewsName($dbNews->getSlug());
-            $dbSeo->setAlt($request->request->get('alt'));
-            $dbSeo->setDescription($request->request->get('description'));
-            $dbSeo->setHtmlTitle($request->request->get('html_title'));
+            try{
 
-            $this->getDoctrine()->getManager()->persist($dbNews);
-            $this->getDoctrine()->getManager()->persist($dbSeo);
+                $dbNews->setDate(new \DateTime(date("d-M-Y")));
+                $dbNews->setImg($this->_uploadFile());
+                $dbNews->setText($request->request->get('text'));
+                $dbNews->setTitle($request->request->get('title'));
+                $dbNews->setSlug($this->_translate($request->request->get('title')));
+                $dbSeo->setNewsName($dbNews->getSlug());
+                $dbSeo->setAlt($request->request->get('alt'));
+                $dbSeo->setDescription($request->request->get('description'));
+                $dbSeo->setHtmlTitle($request->request->get('html_title'));
 
-            $this->getDoctrine()->getManager()->flush();
+                $this->getDoctrine()->getManager()->persist($dbNews);
+                $this->getDoctrine()->getManager()->persist($dbSeo);
+
+                $this->getDoctrine()->getManager()->flush();
+
+            } catch (\Exception $e){
+
+                echo $e->getMessage();
+                die();
+
+            }
+
+
 
 
         }
