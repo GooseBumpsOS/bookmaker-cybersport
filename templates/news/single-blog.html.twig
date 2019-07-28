@@ -95,7 +95,7 @@
             <div class="col-lg-8">
                 <div class="blog-details-wrapper">
                     <div class="blog-details-thumb">
-                        <img src="{{ content.img }}" alt="image">
+                        <img src="{{ asset(content.img) }}" alt="image">
                     </div>
                     <div class="blog-details-content">
                         <ul class="post-meta">
@@ -193,7 +193,7 @@
                             <li>
                                 <div class="small-post-item">
                                     <div class="small-post-thumb">
-                                        <img src="{{ random_content[i].img }}" alt="{{ seo.alt }}">
+                                        <img src="{{ asset(random_content[i].img) }}" alt="{{ seo.alt }}">
                                     </div>
                                     <div class="small-post-content">
                                         <h6><a href="{{ random_content[i].slug }}">{{ random_content[i].title }}</a></h6>
