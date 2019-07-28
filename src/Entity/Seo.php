@@ -17,12 +17,12 @@ class Seo
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=110)
+     * @ORM\Column(type="string", length=255)
      */
     private $news_name;
 
     /**
-     * @ORM\Column(type="string", length=80)
+     * @ORM\Column(type="string", length=255)
      */
     private $html_title;
 
