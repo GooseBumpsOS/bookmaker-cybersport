@@ -44,7 +44,12 @@
                     <ul class="navbar-nav main-menu ml-auto">
                         <li ><a href="{{ path('mainpage') }}">Главная</a></li>
                         <li  ><a href="{{ path('bookmakerlist') }}">Букмекеры</a></li>
-                        <li class="active"><a href="{{ path('news', {'page': 1}) }}">Новости</a></li>
+                        <li class="active menu_has_children"><a href="#">Новости/прогнозы</a>
+                            <ul class="sub-menu">
+                                <li ><a href="{{ path('news', {'page': 1}) }}">Новости</a></li>
+                                <li><a href="{{ path('forecast') }}">Прогнозы</a></li>
+                            </ul>
+                        </li>
                         <li><a href="{{ path('bonus') }}">Бонусы</a></li>
                         <li><a href="{{ path('match_result') }}">Результаты матчей</a></li>
                         <li class="menu_has_children"><a href="#">Информация</a>
@@ -102,7 +107,7 @@
                             <li><a href="blog-details.html#"><i class="fa fa-user"></i>{{ content.date|date("d/M/Y") }}</a></li>
                         </ul>
                         <h2 class="blog-details-title">{{ content.title }}</h2>
-                       {{ content.text|nl2br }}
+                       <p>{{ content.text|nl2br }}</p>
                     </div>
 {#                    <div class="blog-details-footer d-flex justify-content-between">#}
 {#                        <div class="post-tags">#}
@@ -180,7 +185,7 @@
                     <div class="widget widget-categories">
 
 
-                        <img src="https://fas.gov.ru/system/news/images/000/027/081/big/lori-0024278137-bigwww.jpg?1551794424" class="adv" alt="adv">
+                    <a href="https://ggbetpromo.com/l/5d3f9dbd28c43f10615dfc0a?click_id=%%click_id%%&sub_id=%%sub_id%%"><img src="https://ggbetpromo.com/upload_dynamics/1513329710c42bda9290ba1aa445d1.gif" class="adv" alt="adv"></a>
 
 
 

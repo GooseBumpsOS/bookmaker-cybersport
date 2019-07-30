@@ -26,9 +26,9 @@
     $(window).resize(checkSize);
 
     //js code for mobile menu
-    $(".menu-toggle").on("click", function() {
-      $(this).toggleClass("is-active");
-    });
+    // $(".menu-toggle").on("click", function() {
+    //   $(this).toggleClass("is-active");
+    // });
 
   });
 

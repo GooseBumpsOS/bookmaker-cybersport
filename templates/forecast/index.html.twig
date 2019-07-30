@@ -32,6 +32,7 @@
                         </li>
                         <li><a href="{{ path('bonus') }}">Бонусы</a></li>
                         <li><a href="{{ path('match_result') }}">Результаты матчей</a></li>
+
                         <li class="menu_has_children"><a href="#">Информация</a>
                             <ul class="sub-menu">
                                 <li><a href="{{ path('contact') }}">Контакты</a></li>
@@ -60,10 +61,10 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="breadcum-content text-center">
-                        <h3 class="title">Рейтинг букмекеров</h3>
+                        <h3 class="title">Прогнозы</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Домой</a></li>
-                            <li class="breadcrumb-item active">Рейтинг букмекеров</li>
+                            <li class="breadcrumb-item active">Прогнозы</li>
                         </ol>
                     </div>
                 </div>
@@ -74,81 +75,69 @@
 <!-- banner-section end -->
 
 
+
+
 <!-- play-section start -->
 <section class="play-section section-padding section-bg">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="section-header text-center">
-                    <h2 class="section-title">Ставь & Играй сейчас</h2>
-                    <p>Здесь представлены букмекерские конторы, которые принимают ставки на киберспортивные соревнования, то есть турниры по сетевым компьютерным играм..</p>
+                    <h2 class="section-title">Ставь & Выигрывай</h2>
+                    <p>Ставь по правильным прогнозам</p>
                 </div>
+                <a style="margin-bottom: 25px;" href="https://ggbetpromo.com/l/5d3f9dbd28c43f10615dfc0a?click_id=%%click_id%%&sub_id=%%sub_id%%"><img src="https://ggbetpromo.com/upload_dynamics/1511794967c2f7739453d170663c3e.jpg" alt=""></a>
             </div>
         </div>
 
         <div class="row">
             <div class="col-lg-12">
-                <div class="online-play-tab-part">
-                    <ul class="nav justify-content-around" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" id="all" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">
-                                <i ><img style="height: 30px;" src="{{ asset('assets/images/game_logo/all.svg') }}"></i>
-                                <span>Все</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="Dota 2" data-toggle="tab" href="#football" role="tab" aria-controls="football" aria-selected="false">
-                                <i><img style="height: 30px;" src="{{ asset('assets/images/game_logo/dota.svg') }}"></i>
-                                <span>Dota 2</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="CS:GO" data-toggle="tab" href="#cricket" role="tab" aria-controls="cricket" aria-selected="false">
-                                <i><img style="height: 30px;" src="{{ asset('assets/images/game_logo/cs.jpg') }}"></i>
-                                <span>Counter Strike</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="Starcraft 2" data-toggle="tab" href="#tennis" role="tab" aria-controls="tennis" aria-selected="false">
-                                <i><img style="height: 30px;" src="{{ asset('assets/images/game_logo/starcraft_logo.png') }}"></i>
-                                <span>Starcraft 2</span>
-                            </a>
-                        </li>
+                <div class="table-responsive" style="max-width: 100%; overflow: auto;">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr style="text-align: center" class="table-head">
+                        <th>###</th>
+                        <th>Команда 1</th>
+                        <th>Команда 2</th>
+                        <th>Дата</th>
+                        <th>Прогноз</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-self">
+                    {% for i in 1..dbData|length-1 %}
+                    <tr>
 
-                    </ul>
+                        <td>
+                            <img class="forecast" src="{{ asset(dbData[i].getGame )}}">
 
+                        </td>
 
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                        <tr class="table-head">
-                            <th>Букмекер</th>
-                            <th>Страница</th>
-                            <th>Рейтинг</th>
-                        </tr>
-                        </thead>
-                        <tbody class="table-self">
-                        <tr>
-                            <td>Париматч</td>
-                            <td>
+                        <td>
+                            {{ dbData[i].getTeam1 }}
 
-                                <button type="button" class="btn btn-danger center-block"><a href="">Отзывы</a></button>
+                        </td>
+
+                        <td>
+                            {{ dbData[i].getTeam2 }}
+                        </td>
+
+                        <td>
+                            {{ dbData[i].getDate }}
+                        </td>
+
+                        <td>
+                            {{ dbData[i].getScore }}
+                        </td>
 
 
-                            </td>
-                            <td>
-
-                                <i class="fa fa-star" style="color: #FFD700;" aria-hidden="true"></i>
+                    </tr>
+                    {% endfor %}
 
 
-                            </td>
-
-                        </tr>
-
-
-                        </tbody>
-                    </table>
-
+                    </tbody>
+                </table>
                 </div>
+
             </div>
         </div>
 
@@ -160,5 +149,3 @@
 
 
 {% include 'usual_template/footer.html.twig' %}
-
-<script src="{{ asset('assets/js/bookmakerTable.js') }}"> </script>

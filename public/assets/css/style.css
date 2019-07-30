@@ -2411,11 +2411,27 @@ span.is-active:after {
 
 }
 
+.forecast{
+
+
+  height: 24px;
+
+
+}
+
 @media (min-width: 441px) {
 
   .img-bookmaker{
 
     margin: 0 75%;
+
+  }
+
+  .forecast{
+
+
+    height: 40px;
+
 
   }
 

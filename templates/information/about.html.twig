@@ -24,7 +24,12 @@
                     <ul class="navbar-nav main-menu ml-auto">
                         <li ><a href="{{ path('mainpage') }}">Главная</a></li>
                         <li  ><a href="{{ path('bookmakerlist') }}">Букмекеры</a></li>
-                        <li ><a href="{{ path('news', {'page': 1}) }}">Новости</a></li>
+                        <li class="menu_has_children"><a href="#">Новости/прогнозы</a>
+                            <ul class="sub-menu">
+                                <li ><a href="{{ path('news', {'page': 1}) }}">Новости</a></li>
+                                <li><a href="{{ path('forecast') }}">Прогнозы</a></li>
+                            </ul>
+                        </li>
                         <li><a href="{{ path('bonus') }}">Бонусы</a></li>
                         <li><a href="{{ path('match_result') }}">Результаты матчей</a></li>
                         <li class="menu_has_children"><a href="#">Информация</a>
