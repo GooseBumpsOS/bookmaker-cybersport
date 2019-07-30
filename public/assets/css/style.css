@@ -2435,4 +2435,10 @@ span.is-active:after {
 
   }
 
+  .bookmakerButton{
+
+    width: 25%;
+
+  }
+
 }

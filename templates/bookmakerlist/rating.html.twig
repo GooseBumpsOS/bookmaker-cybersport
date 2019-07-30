@@ -42,7 +42,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav main-menu ml-auto">
                         <li ><a href="{{ path('mainpage') }}">Главная</a></li>
-                        <li  ><a href="{{ path('bookmakerlist') }}">Букмекеры</a></li>
+                        <li class="active" ><a href="{{ path('bookmakerlist') }}">Букмекеры</a></li>
                         <li class="menu_has_children"><a href="#">Новости/прогнозы</a>
                             <ul class="sub-menu">
                                 <li ><a href="{{ path('news', {'page': 1}) }}">Новости</a></li>
@@ -100,7 +100,13 @@
                     <div class="blog-details-content">
 
                         <a href="{{ content.link }}"><h2 class="blog-details-title">{{ content.name }}</h2></a> <br><br>
-                        {{ content.info|nl2br }}
+
+                        <p>{{ content.info|nl2br }}</p>
+                    </div>
+
+                    <div class="col-md-12 text-center">
+                    <button type="button"  class="bookmakerButton btn btn-danger"><a href="{{ content.link }}">К букмекеру</a></button>
+                        <button type="button" class="bookmakerButton btn btn-danger"><a href="{{ path('bonus') }}">Бонусы</a></button>
                     </div>
 
                 </div><!-- blog-details-wrapper end -->
@@ -110,6 +116,8 @@
                     {% if rating|length >= 1  %}
                         {% for i in 0..rating|length-1 %}
                             <li>
+
+
 
 
                                 <div class="single-comment-wrap">
