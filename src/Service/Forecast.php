@@ -34,8 +34,9 @@ class Forecast
     private function _parse(){
 
         $parseData = [];
+        $url = 'https://stavkiprognozy.ru/prognozy/kibersport/';
 
-        $crawler = new Crawler($this->_getRawHtml('https://stavkiprognozy.ru/prognozy/kibersport/'));
+        $crawler = new Crawler($this->_getRawHtml($url));
 
         for ($i = 0; $i < $crawler->filter('.announce-item-body')->count() * 2; $i += 2) {
             $date = $crawler->filter('.announce-item-time')->eq(intdiv($i, 2))->text();
@@ -44,14 +45,11 @@ class Forecast
 
             $team_2 = $crawler->filter('.single-announce-team-title')->eq($i + 1)->text();
 
-            try{
-                $score = $crawler->filter('.single-announce-count-item')->eq(intdiv($i, 2))->text();
-            }
-            catch (\Exception $e){
+            $link = $crawler->filter('.not-link')->eq(intdiv($i, 2))->attr('href');
 
-                $score = 'Ожидайте прогноза';
+            $insideCrawelr = new Crawler($this->_getRawHtml($url . $link));
 
-            }
+            $score = $insideCrawelr->filter('.list-info-prop')->text();
 
 
             $game = $this->getGameLogo($crawler->filter('.announce-item-category-link')->eq(intdiv($i, 2))->attr('title'));
