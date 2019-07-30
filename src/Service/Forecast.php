@@ -8,7 +8,7 @@ use Symfony\Component\DomCrawler\Crawler;
 class Forecast
 {
     const dbTable = 'forecast';
-    const dbName = 'symfony';
+    const dbName = 'cyber-sport';
     const dbPass = 'g)^}YJy%`TFw9ner:3q>y@8RK;47=^3x';
     const dbUser = 'symfony';
 
@@ -44,7 +44,15 @@ class Forecast
 
             $team_2 = $crawler->filter('.single-announce-team-title')->eq($i + 1)->text();
 
-            $score = $crawler->filter('.single-announce-count-item')->eq(intdiv($i, 2))->text();
+            try{
+                $score = $crawler->filter('.single-announce-count-item')->eq(intdiv($i, 2))->text();
+            }
+            catch (\Exception $e){
+
+                $score = 'Ожидайте прогноза';
+
+            }
+
 
             $game = $this->getGameLogo($crawler->filter('.announce-item-category-link')->eq(intdiv($i, 2))->attr('title'));
 
