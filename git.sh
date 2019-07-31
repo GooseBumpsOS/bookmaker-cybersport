@@ -3,6 +3,6 @@
 git stash
 git pull
 
-sudo rm -rf var/cach/prod
+sudo rm -rf var/cach/*
 
 cp /var/www/.env /var/www/bookmaker-cybersport/.env

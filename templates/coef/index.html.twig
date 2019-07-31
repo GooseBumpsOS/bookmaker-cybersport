@@ -40,11 +40,7 @@
                             <ul class="sub-menu">
                                 <li><a href="{{ path('contact') }}">Контакты</a></li>
                                 <li><a href="{{ path('policy') }}">Политика</a></li>
-                                <!-- <li><a href="service.html">Services</a></li>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="registration.html">Registration</a></li>
-                                <li><a href="faq.html">FAQ</a></li>
-                                <li><a href="error-404.html">ERROR Page</a></li> -->
+
                             </ul>
                         </li>
                         <li><a href="{{ path('about') }}">О нас</a></li>
@@ -76,9 +72,44 @@
     </div>
 </section>
 <!-- banner-section end -->
-
+<img class="ggBetLong" src="https://ggbetpromo.com/upload_dynamics/15117925425d20a7b2ad70758aaa85.jpg" alt="">
+{#                        TODO добавить реферальную ссылку#}
 <!-- result-section start -->
 <section class="result-section section-padding">
+
+    <ul class="nav justify-content-around" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="All" data-toggle="tab" href="#all" role="tab" aria-controls="all" aria-selected="true">
+                <i ><img style="height: 40px;" src="{{ asset('assets/images/game_logo/all.svg') }}"></i>
+                <span>Все</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="Dota 2" data-toggle="tab" href="#football" role="tab" aria-controls="football" aria-selected="false">
+                <i><img style="height: 40px;" src="{{ asset('assets/images/game_logo/dota.svg') }}"></i>
+                <span>Dota 2</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="Counter-Strike" data-toggle="tab" href="#cricket" role="tab" aria-controls="cricket" aria-selected="false">
+                <i><img style="height: 40px;" src="{{ asset('assets/images/game_logo/cs.jpg') }}"></i>
+                <span>Counter Strike</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="League of Legends" data-toggle="tab" href="#tennis" role="tab" aria-controls="tennis" aria-selected="false">
+                <i><img style="height: 40px;" src="{{ asset('assets/images/game_logo/lol.jpg') }}"></i>
+                <span>Lol</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="Overwatch" data-toggle="tab" href="#overwatch" role="tab" aria-controls="cricket" aria-selected="false">
+                <i><img style="height: 40px;" src="{{ asset('assets/images/game_logo/overwatch.jpg') }}"></i>
+                <span>Overwatch</span>
+            </a>
+        </li>
+
+    </ul>
 
     <div class="container">
         <div class="row justify-content-center jQuerySelectorCoef">
@@ -138,4 +169,4 @@
 
 {% include 'usual_template/footer.html.twig' %}
 
-<script src="{{ asset('assets/js/resultTable.js') }}"></script>
+<script src="{{ asset('assets/js/coef.js') }}"></script>

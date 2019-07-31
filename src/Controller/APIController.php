@@ -136,23 +136,38 @@ class APIController extends AbstractController
      */
     public function coef(Request $request)
     {
+        if (!$request->request->count())
+            throw $this->createNotFoundException('Not found 404');
 
         $data = [];
+        $searchGame = $request->request->get('game');
         $xmlData = new SimpleXMLElement(file_get_contents('http://sportsbookfeed.com/sportxml'));
 
         for ($i=0; $i < $xmlData->Sport->Event->count(); $i++)
         {
-            $team_1 = $xmlData->Sport->Event[$i]->Match->Bet->Odd[0]['Name'];
-            $team_2 = $xmlData->Sport->Event[$i]->Match->Bet->Odd[$xmlData->Sport->Event[0]->Match->Bet->Odd->count() - 1]['Name'];
+            $team = explode('vs', $xmlData->Sport->Event[$i]->Match['Name']);
+            try{
+            $team_1 = $team[0];
+            $team_2 = $team[1];} catch (\Exception $e){
+                continue;
+            }
             $game = $this->_pregStrToLogo($xmlData->Sport->Event[$i]['Name']);
             $coef_1 = $xmlData->Sport->Event[$i]->Match->Bet->Odd[0]['Value'];
             $coef_2 = $xmlData->Sport->Event[$i]->Match->Bet->Odd[$xmlData->Sport->Event[0]->Match->Bet->Odd->count() - 1]['Value'];
             $date = date_format(date_create($xmlData->Sport->Event[$i]->Match['StartDate']), "d-m-Y H:i");
-            array_push($data, ['team_1' => (string)$team_1, 'team_2' => (string)$team_2, 'game' => (string)$game, 'coef_1' => (string)$coef_1, 'coef_2' => (string)$coef_2, 'date' => $date]);
+            array_push($data, ['team_1' => (string)$team_1, 'team_2' => (string)$team_2, 'game' => $game, 'coef_1' => (string)$coef_1, 'coef_2' => (string)$coef_2, 'date' => $date]);
 
         }
 
-        return new JsonResponse($data);
+        if ($searchGame != 'All')
+            $data = array_filter($data, function ($v) use ($searchGame){
+
+                return $v['game'][1] == $searchGame;
+
+            });
+
+
+        return new JsonResponse(array_values($data));
 
     }
 
@@ -170,49 +185,49 @@ class APIController extends AbstractController
         switch ($game) {
 
             case 'Dota 2':
-                return 'assets/images/game_logo/dota.svg';
+                return ['assets/images/game_logo/dota.svg', $game];
 
             case 'CS:GO':
-                return 'assets/images/game_logo/cs.jpg';
+                return ['assets/images/game_logo/cs.jpg', $game];
 
             case 'League of Legends':
-                return 'assets/images/game_logo/lol.jpg';
+                return ['assets/images/game_logo/lol.jpg', $game];
 
             case 'Counter-Strike':
-                return 'assets/images/game_logo/cs.jpg';
+                return ['assets/images/game_logo/cs.jpg', $game];
 
             case 'Overwatch':
-                return 'assets/images/game_logo/overwatch.jpg';
+                return ['assets/images/game_logo/overwatch.jpg', $game];
 
             case 'Rainbow Six':
-                return 'assets/images/game_logo/rainbow_six.jpg';
+                return ['assets/images/game_logo/rainbow_six.jpg', $game];
 
             case 'Fortnite':
-                return 'assets/images/game_logo/Fortnite.jpg';
+                return ['assets/images/game_logo/Fortnite.jpg', $game];
 
             case 'WarCraft III':
-                return 'assets/images/game_logo/w3.jpg';
+                return ['assets/images/game_logo/w3.jpg', $game];
 
             case 'StarCraft II':
-                return 'assets/images/game_logo/starcraft_logo.png';
+                return ['assets/images/game_logo/starcraft_logo.png', $game];
 
             case 'Call of Duty':
-                return 'assets/images/game_logo/cd.png';
+                return ['assets/images/game_logo/cd.png', $game];
 
             case 'FIFA':
-                return 'assets/images/game_logo/FIFA.png';
+                return ['assets/images/game_logo/FIFA.png', $game];
 
             case 'NBA 2k18':
-                return 'assets/images/game_logo/nba.png';
+                return ['assets/images/game_logo/nba.png', $game];
 
             case 'King of Glory':
-                return 'assets/images/game_logo/kgglory.png';
+                return ['assets/images/game_logo/kgglory.png', $game];
 
             case 'Battlegrounds':
-                return 'assets/images/game_logo/pubg.jpg';
+                return ['assets/images/game_logo/pubg.jpg', $game];
 
             default:
-                return 'assets/images/game_logo/no_game.svg';
+                return ['assets/images/game_logo/no_game.svg', $game];
 
 
 
