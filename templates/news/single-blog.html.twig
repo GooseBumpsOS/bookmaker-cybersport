@@ -114,22 +114,30 @@
                         <h2 class="blog-details-title">{{ content.title }}</h2>
                        <p>{{ content.text|nl2br }}</p>
                     </div>
-{#                    <div class="blog-details-footer d-flex justify-content-between">#}
-{#                        <div class="post-tags">#}
-{#                            <i class="fa fa-tags"></i>#}
-{#                            <a href="blog-details.html#">Bet</a>#}
-{#                            <a href="blog-details.html#">football</a>#}
-{#                            <a href="blog-details.html#">casino</a>#}
-{#                            <a href="blog-details.html#">news</a>#}
-{#                        </div>#}
-{#                        <div class="meta-share">#}
-{#                            <i class="fa fa-share"></i>#}
-{#                            <a href="blog-details.html#"><i class="fa fa-facebook-f"></i></a>#}
-{#                            <a href="blog-details.html#"><i class="fa fa-google-plus"></i></a>#}
-{#                            <a href="blog-details.html#"><i class="fa fa-twitter"></i></a>#}
-{#                            <a href="blog-details.html#"><i class="fa fa-vimeo"></i></a>#}
-{#                        </div>#}
-{#                    </div>#}
+
+                    <div class="comment-form-wrap">
+                        <h3 class="title">Оставить отзыв</h3>
+                        <form class="cmn-form comment-form" action="" method="post">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="frm-group">
+                                        <input type="text" name="name" id="name" placeholder="Имя*" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="frm-group">
+                                        <textarea name="msg" id="message" placeholder="Ваше сообщение" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="frm-group">
+                                        <button type="submit" class="submit-btn">Ответить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
                 </div><!-- blog-details-wrapper end -->
                 <div class="comment-area">
                     <h3 class="title">Кол-во комментариев: {{ comment|length }}</h3>
@@ -156,28 +164,7 @@
 
                     </ul>
                 </div><!-- comment-area end -->
-                <div class="comment-form-wrap">
-                    <h3 class="title">Оставить отзыв</h3>
-                    <form class="cmn-form comment-form" action="" method="post">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="frm-group">
-                                    <input type="text" name="name" id="name" placeholder="Имя*" required>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="frm-group">
-                                    <textarea name="msg" id="message" placeholder="Ваше сообщение" required></textarea>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="frm-group">
-                                    <button type="submit" class="submit-btn">Ответить</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+
             </div>
             <div class="col-lg-4">
                 <div class="sidebar">
