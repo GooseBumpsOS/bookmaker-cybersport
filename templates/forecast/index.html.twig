@@ -1,9 +1,9 @@
 
 {% include 'usual_template/header.html.twig' %}
 
-<title>Топ букмекеров принимающих ставки на киберспорт</title>
+<title>Прогнозы на киберспорт | cyberrating.ru</title>
 
-<meta name="description" content="Рейтинг и отзывы о букмекерах принимающих ставки на киберспортивные события. Обзор бонусов и событий киберспорта.">
+<meta name="description" content="Ставки на киберспорт, прогнозы на киберспорт.">
 
 
 <!-- preloader start -->
@@ -31,17 +31,17 @@
                             </ul>
                         </li>
                         <li><a href="{{ path('bonus') }}">Бонусы</a></li>
-                        <li><a href="{{ path('match_result') }}">Результаты матчей</a></li>
-
+                        <li class="menu_has_children"><a href="#">Матчи/Коэффициенты</a>
+                            <ul class="sub-menu">
+                                <li ><a href="{{ path('match_result') }}">Результаты матчей</a></li>
+                                <li ><a href="{{ path('coef') }}">Коэффициенты</a></li>
+                            </ul>
+                        </li>
                         <li class="menu_has_children"><a href="#">Информация</a>
                             <ul class="sub-menu">
                                 <li><a href="{{ path('contact') }}">Контакты</a></li>
                                 <li><a href="{{ path('policy') }}">Политика</a></li>
-                                <!-- <li><a href="service.html">Services</a></li>
-                                <li><a href="login.html">Login</a></li>
-                                <li><a href="registration.html">Registration</a></li>
-                                <li><a href="faq.html">FAQ</a></li>
-                                <li><a href="error-404.html">ERROR Page</a></li> -->
+
                             </ul>
                         </li>
                         <li><a href="{{ path('about') }}">О нас</a></li>

@@ -29,7 +29,12 @@
                             </ul>
                         </li>
                         <li><a href="{{ path('bonus') }}">Бонусы</a></li>
-                        <li class="active"><a href="{{ path('match_result') }}">Результаты матчей</a></li>
+                        <li class="menu_has_children"><a href="#">Матчи/Коэффициенты</a>
+                            <ul class="sub-menu">
+                                <li class="active"><a href="{{ path('match_result') }}">Результаты матчей</a></li>
+                                <li ><a href="{{ path('coef') }}">Коэффициенты</a></li>
+                            </ul>
+                        </li>
                         <li class="menu_has_children"><a href="#">Информация</a>
                             <ul class="sub-menu">
                                 <li><a href="{{ path('contact') }}">Контакты</a></li>

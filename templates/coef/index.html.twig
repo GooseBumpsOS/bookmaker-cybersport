@@ -30,7 +30,12 @@
                             </ul>
                         </li>
                         <li><a href="{{ path('bonus') }}">Бонусы</a></li>
-                        <li><a href="{{ path('match_result') }}">Результаты матчей</a></li>
+                        <li class="menu_has_children"><a href="#">Матчи/Коэффициенты</a>
+                            <ul class="sub-menu">
+                                <li ><a href="{{ path('match_result') }}">Результаты матчей</a></li>
+                                <li class="active"><a href="{{ path('coef') }}">Коэффициенты</a></li>
+                            </ul>
+                        </li>
                         <li class="menu_has_children"><a href="#">Информация</a>
                             <ul class="sub-menu">
                                 <li><a href="{{ path('contact') }}">Контакты</a></li>
@@ -76,13 +81,10 @@
 <section class="result-section section-padding">
 
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center jQuerySelectorCoef">
 
-{#            <img id="resultPreloader" src="{{ asset('assets/images/tablePreloader.gif') }}">#}
+            <img id="resultPreloader" src="{{ asset('assets/images/tablePreloader.gif') }}">
 
-
-
-            <h1> Извините, но данный раздел еще не готов ;(</h1>
 
         </div>
         <div class="row mt-mb-15">
@@ -136,4 +138,4 @@
 
 {% include 'usual_template/footer.html.twig' %}
 
-{#<script src="{{ asset('assets/js/resultTable.js') }}"></script>#}
+<script src="{{ asset('assets/js/resultTable.js') }}"></script>
