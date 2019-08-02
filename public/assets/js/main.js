@@ -42,7 +42,7 @@
         if (element.hasClass("open")) {
           element.removeClass("open");
           element.find("li").removeClass("open");
-          element.find("ul").slideUp(500,"linear");
+          element.find("ul").slideUp();
         }
         else {
           element.addClass("open");

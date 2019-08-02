@@ -104,15 +104,15 @@
             <!-- В блоке выше бэкграунд вставлен инлайново чтобы его можно было получать с php -->
             <div class="bonus__header bonus-header"><!-- bonus-header -->
                 <div class="bonus-header__top bonus-header-top">
-                    <img src="{{ dbData[i].logo }}" alt="" class="bonus-header-top__image"><!-- не забыть вставить ссылку на картинку -->
+                    <a href="{{ dbData[i].link }}"><img src="{{ dbData[i].logo }}" alt="" class="bonus-header-top__image"></a><!-- не забыть вставить ссылку на картинку -->
                     <div class="bonus-header-top__tags bonus-header-top-tags">
-                        <span class="bonus-header-top-tags__simple">Приветственный бонус</span>
+                        <a href="{{ dbData[i].link }}"><span class="bonus-header-top-tags__simple">Приветственный бонус</span></a>
                         <div class="bonus-header-top-tags__exclusive bonus-header-top-tags-exclusive">
 
                         </div>
                     </div>
                 </div>
-                <a href="" class="bonus-header__title"><h4>{{ dbData[i].title }}</h4></a> <!-- вставить ссылку на страницу с информацией -->
+                <a href="{{ dbData[i].link }}" class="bonus-header__title"><h4>{{ dbData[i].title }}</h4></a> <!-- вставить ссылку на страницу с информацией -->
 {#                <div class="bonus-header__authorization bonus-header-authorization">#}
 {#                    <a href="" class="bonus-header-authorization__link">Авторизируйтесь, чтобы получить бонус</a> <!-- вставить ссылку на страницу авторизации -->#}
 {#                </div>#}
