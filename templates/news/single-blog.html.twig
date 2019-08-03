@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <!-- responsive css file -->
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
+    <!-- google recaptcha js file -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 {#SEO#}
 
@@ -127,9 +129,13 @@
                                 <div class="col-md-12">
                                     <div class="frm-group">
                                         <textarea name="msg" id="message" placeholder="Ваше сообщение" required></textarea>
+                                        <div class="g-recaptcha" data-sitekey="6LfBGLEUAAAAAINWJJhMKw3AQCIgNjrwsa-Pehz3"></div>
                                     </div>
                                 </div>
+
                                 <div class="col-md-12">
+
+
                                     <div class="frm-group">
                                         <button type="submit" class="submit-btn">Ответить</button>
                                     </div>

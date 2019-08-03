@@ -36,15 +36,36 @@ class NewsController extends AbstractController
     {
         if ($request->request->count() != 0) { //блок отвечает за добавления комментария в базу
 
-            $dbComment = new NewsComment();
+            if ($request->request->get('g-recaptcha-response'))
+            {
+                $url = 'https://www.google.com/recaptcha/api/siteverify?';
 
-            $dbComment->setComment($request->request->get('msg'));
-            $dbComment->setNewsName($slug);
-            $dbComment->setTime(time());
-            $dbComment->setUserName($request->request->get('name'));
+                $query = http_build_query([
 
-            $this->getDoctrine()->getManager()->persist($dbComment);
-            $this->getDoctrine()->getManager()->flush();
+                    'secret' => '6LfBGLEUAAAAALn6qFzJy8saIK7wsAId7uldcrW3',
+                    'response' => $request->request->get('g-recaptcha-response'),
+                    'remoteip' => $request->getClientIp()
+                ]);
+
+               $recaptchaData =  json_decode(file_get_contents($url . $query), true);
+
+               if($recaptchaData['success'])
+               {
+                   $dbComment = new NewsComment();
+
+                   $dbComment->setComment($request->request->get('msg'));
+                   $dbComment->setNewsName($slug);
+                   $dbComment->setTime(time());
+                   $dbComment->setUserName($request->request->get('name'));
+
+                   $this->getDoctrine()->getManager()->persist($dbComment);
+                   $this->getDoctrine()->getManager()->flush();
+
+               }
+
+            }
+
+
 
         }
 
@@ -57,14 +78,14 @@ class NewsController extends AbstractController
         if ($content == null) //проверка на существование записи в бд
             throw $this->createNotFoundException('Not found 404');
 
-        $comment = $emNewsComment->findBy(['news_name' => $slug]);
+        $comment = $emNewsComment->findBy(['news_name' => $slug],['id' => 'DESC']);
         $seo = $emSeo->findOneBy(['news_name' => $slug]);
 
         return $this->render('news/single-blog.html.twig', [
             'content' => $content,
             'random_content' => $emNews->getRandom(4),
             'comment' => $comment,
-            'seo' => $seo,
+            'seo' => $seo
         ]);
     }
 }

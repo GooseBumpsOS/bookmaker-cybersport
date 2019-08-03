@@ -29,17 +29,34 @@ class BookmakerlistController extends AbstractController
     {
         if ($request->request->count() != 0) { //блок отвечает за добавления комментария в базу
 
-            $dbComment = new BookmakerRating();
+            if ($request->request->get('g-recaptcha-response'))
+            {
+                $url = 'https://www.google.com/recaptcha/api/siteverify?';
 
-            $dbComment->setUserName($request->request->get('name'));
-            $dbComment->setComment($request->request->get('msg'));
-            $dbComment->setMark($request->request->get('rating'));
-            $dbComment->setBookmakerName($this->_translitToRussian($bookmakerName));
+                $query = http_build_query([
+
+                    'secret' => '6LfBGLEUAAAAALn6qFzJy8saIK7wsAId7uldcrW3',
+                    'response' => $request->request->get('g-recaptcha-response'),
+                    'remoteip' => $request->getClientIp()
+                ]);
+
+                $recaptchaData =  json_decode(file_get_contents($url . $query), true);
+
+                if($recaptchaData['success'])
+                {
+                    $dbComment = new BookmakerRating();
+
+                    $dbComment->setUserName($request->request->get('name'));
+                    $dbComment->setComment($request->request->get('msg'));
+                    $dbComment->setMark($request->request->get('rating'));
+                    $dbComment->setBookmakerName($this->_translitToRussian($bookmakerName));
 
 
-            $this->getDoctrine()->getManager()->persist($dbComment);
-            $this->getDoctrine()->getManager()->flush();
+                    $this->getDoctrine()->getManager()->persist($dbComment);
+                    $this->getDoctrine()->getManager()->flush();
+                }
 
+            }
         }
         $emBookmaker = $this->getDoctrine()->getManager()->getRepository(Bookmaker::class);
         $emBookmakerRatin = $this->getDoctrine()->getManager()->getRepository(BookmakerRating::class);
@@ -48,14 +65,14 @@ class BookmakerlistController extends AbstractController
         try{
 
             $content = $emBookmaker->findOneBy(['name' => $this->_translitToRussian($bookmakerName)]);
-            $rating = $emBookmakerRatin->findBy(['bookmaker_name' => $this->_translitToRussian($bookmakerName)]);
+            $rating = $emBookmakerRatin->findBy(['bookmaker_name' => $this->_translitToRussian($bookmakerName)],['id' => 'DESC']);
             $seo = $emSeo->findOneBy(['news_name' => $this->_translitToRussian($bookmakerName)]);
             $avg = $emBookmakerRatin->getAvgOfMark($this->_translitToRussian($bookmakerName));
 
         } catch (\TypeError $error){
 
             $content = $emBookmaker->findOneBy(['name' => $bookmakerName]);
-            $rating = $emBookmakerRatin->findBy(['bookmaker_name' => $bookmakerName]);
+            $rating = $emBookmakerRatin->findBy(['bookmaker_name' => $bookmakerName],['id' => 'DESC']);
             $seo = $emSeo->findOneBy(['news_name' => $bookmakerName]);
             $avg = $emBookmakerRatin->getAvgOfMark($bookmakerName);
 
