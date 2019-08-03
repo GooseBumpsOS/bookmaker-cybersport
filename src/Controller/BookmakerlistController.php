@@ -49,7 +49,10 @@ class BookmakerlistController extends AbstractController
                     $dbComment->setUserName($request->request->get('name'));
                     $dbComment->setComment($request->request->get('msg'));
                     $dbComment->setMark($request->request->get('rating'));
-                    $dbComment->setBookmakerName($this->_translitToRussian($bookmakerName));
+                    if ($bookmakerName == 'Liga stavok')
+                        $dbComment->setBookmakerName($this->_translitToRussian($bookmakerName));
+                    else
+                        $dbComment->setBookmakerName($bookmakerName);
 
 
                     $this->getDoctrine()->getManager()->persist($dbComment);
